@@ -31,8 +31,8 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .setup-card h1{font-size:24px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;}
 .setup-card>p{font-size:14px;color:var(--muted);margin-bottom:1.75rem;}
 .field-label{font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.setup-card input[type=text]{width:100%;padding:13px 14px;font-size:15px;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius);color:var(--text);outline:none;margin-bottom:1.25rem;}
-.setup-card input:focus{border-color:var(--g1);}
+.setup-input{width:100%;padding:13px 14px;font-size:15px;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius);color:var(--text);outline:none;margin-bottom:1.25rem;}
+.setup-input:focus{border-color:var(--g1);}
 .team-type-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:1.5rem;}
 .team-type-btn{padding:12px 8px;text-align:center;font-size:13px;font-weight:500;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius);cursor:pointer;transition:all 0.15s;color:var(--muted);}
 .team-type-btn.active{background:var(--grad-dim);border-color:var(--g1);color:var(--text);}
@@ -53,8 +53,7 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .my-section{padding:0 1.25rem 1rem;}
 .my-card{background:var(--bg2);border:0.5px solid var(--border2);border-radius:var(--radius-lg);padding:1.5rem;position:relative;overflow:hidden;}
 .my-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);}
-.my-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:0.25rem;}
-.my-name-row{display:flex;align-items:center;gap:8px;}
+.my-name-row{display:flex;align-items:center;gap:8px;margin-bottom:0.25rem;}
 .my-name{font-size:12px;letter-spacing:0.07em;text-transform:uppercase;color:var(--muted);}
 .team-badge{font-size:10px;padding:2px 8px;border-radius:99px;background:var(--grad-dim);color:var(--g1);border:0.5px solid rgba(124,111,255,0.3);}
 .my-count{font-size:72px;font-weight:700;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-variant-numeric:tabular-nums;}
@@ -87,16 +86,14 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .lb-row:hover{background:var(--bg3);transform:translateX(2px);}
 .lb-row.me{border-color:rgba(124,111,255,0.4);background:rgba(124,111,255,0.07);}
 .lb-row.done-row{border-color:rgba(255,111,216,0.25);}
-.lb-rank{font-size:12px;color:var(--muted);width:20px;text-align:center;flex-shrink:0;font-variant-numeric:tabular-nums;}
+.lb-rank{font-size:12px;color:var(--muted);width:20px;text-align:center;flex-shrink:0;}
 .lb-rank.gold{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;}
 .lb-rank.silver{color:#c0c0c0;font-weight:600;}
 .lb-rank.bronze{color:#cd7f32;font-weight:600;}
 .lb-info{flex:1;min-width:0;}
-.lb-name{font-size:14px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.lb-team-tag{font-size:10px;color:var(--muted);margin-top:1px;}
+.lb-name{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.lb-team-tag{font-size:11px;color:var(--muted);margin-top:1px;}
 .lb-right{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0;}
-.lb-score{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--muted);}
-.lb-row.me .lb-score{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .lb-time{font-size:11px;color:var(--g2);font-variant-numeric:tabular-nums;font-weight:600;}
 .lb-time-pending{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;}
 .lb-minibar{width:56px;height:3px;background:var(--bg3);border-radius:99px;overflow:hidden;}
@@ -128,10 +125,11 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .admin-title{font-size:18px;font-weight:700;margin-bottom:4px;}
 .admin-sub{font-size:13px;color:var(--muted);margin-bottom:1.5rem;}
 .admin-row{display:flex;align-items:center;gap:8px;background:var(--bg3);border-radius:var(--radius);padding:10px 12px;margin-bottom:6px;}
-.admin-rname{flex:1;font-size:14px;font-weight:500;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.admin-rname{flex:1;font-size:13px;font-weight:500;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
 .admin-score-input{width:64px;padding:7px 8px;font-size:14px;background:var(--bg4);border:0.5px solid var(--border2);border-radius:8px;color:var(--text);outline:none;text-align:center;}
 .admin-score-input:focus{border-color:var(--g1);}
-.admin-save-btn{padding:7px 12px;font-size:13px;font-weight:600;background:var(--grad);color:#fff;border:none;border-radius:8px;cursor:pointer;white-space:nowrap;}
+.admin-save-btn{padding:7px 14px;font-size:13px;font-weight:600;background:var(--grad);color:#fff;border:none;border-radius:8px;cursor:pointer;white-space:nowrap;}
+.admin-save-btn:active{opacity:0.8;}
 
 /* CELEBRATION */
 #celebration{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:rgba(9,9,15,0.92);opacity:0;pointer-events:none;transition:opacity 0.4s;}
@@ -143,17 +141,23 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .celeb-title{font-size:24px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px;}
 .celeb-time{font-size:32px;font-weight:700;color:var(--g2);margin:8px 0;font-variant-numeric:tabular-nums;}
 .celeb-sub{font-size:14px;color:var(--muted);margin-bottom:1.5rem;}
+.celeb-btns{display:flex;flex-direction:column;gap:8px;}
 .celeb-btn{padding:13px 28px;font-size:14px;font-weight:700;background:var(--grad);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;}
+.celeb-btn-insta{padding:13px 28px;font-size:14px;font-weight:600;background:var(--bg3);color:var(--text);border:0.5px solid var(--border2);border-radius:var(--radius);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
+.celeb-btn-insta:hover{background:var(--bg4);}
 .confetti-piece{position:fixed;width:8px;height:8px;border-radius:2px;opacity:0;pointer-events:none;z-index:201;animation:confetti-fall 2.5s ease-in forwards;}
 @keyframes confetti-fall{0%{opacity:1;transform:translateY(-10px) rotate(0deg);}100%{opacity:0;transform:translateY(100vh) rotate(720deg);}}
 
 /* ADMIN LOGIN */
-#screen-admin{min-height:100vh;align-items:center;justify-content:center;padding:2rem;}
+#screen-admin{min-height:100vh;display:none;align-items:center;justify-content:center;padding:2rem;}
 .admin-login-card{background:var(--bg2);border:0.5px solid var(--border2);border-radius:var(--radius-lg);padding:2rem;width:100%;max-width:340px;}
 .admin-login-card h2{font-size:20px;font-weight:700;margin-bottom:6px;}
 .admin-login-card p{font-size:13px;color:var(--muted);margin-bottom:1.5rem;}
 .admin-login-card input{width:100%;padding:13px 14px;font-size:15px;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius);color:var(--text);outline:none;margin-bottom:12px;}
 .admin-login-card input:focus{border-color:var(--g1);}
+
+/* CANVAS HIDDEN */
+#share-canvas{display:none;}
 </style>
 </head>
 <body>
@@ -171,16 +175,16 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
   <div class="setup-card">
     <h1>1000 Burpees</h1>
     <p>Rejoins le classement live et donne tout !</p>
-    <p class="field-label">Ton pseudo</p>
-    <input type="text" id="pseudo-input" placeholder="Nom ou pseudo" maxlength="20" autocomplete="off" spellcheck="false"/>
+    <p class="field-label">Ton prénom / pseudo</p>
+    <input type="text" id="pseudo-input" class="setup-input" placeholder="Prénom ou pseudo" maxlength="20" autocomplete="off" spellcheck="false"/>
     <p class="field-label">Type d'équipe</p>
     <div class="team-type-row">
       <div class="team-type-btn active" id="tt-solo" onclick="setTeamType('solo')"><div class="tt-label">🧍</div>Solo</div>
       <div class="team-type-btn" id="tt-duo" onclick="setTeamType('duo')"><div class="tt-label">👥</div>Duo</div>
     </div>
     <div id="partner-field" style="display:none">
-      <p class="field-label">Pseudo du partenaire</p>
-      <input type="text" id="partner-input" placeholder="Partenaire" maxlength="20" autocomplete="off" spellcheck="false" style="margin-bottom:1.25rem;"/>
+      <p class="field-label">Prénom / pseudo du partenaire</p>
+      <input type="text" id="partner-input" class="setup-input" placeholder="Partenaire" maxlength="20" autocomplete="off" spellcheck="false"/>
     </div>
     <button class="btn-join" onclick="startApp()">Rejoindre le challenge 💪</button>
     <p class="admin-link" onclick="showAdminLogin()">Accès admin</p>
@@ -195,11 +199,9 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
   </div>
   <div class="my-section">
     <div class="my-card">
-      <div class="my-top">
-        <div class="my-name-row">
-          <span class="my-name" id="my-name">—</span>
-          <span class="team-badge" id="my-badge">Solo</span>
-        </div>
+      <div class="my-name-row">
+        <span class="my-name" id="my-name">—</span>
+        <span class="team-badge" id="my-badge">Solo</span>
       </div>
       <div class="my-count" id="my-count">0</div>
       <p class="my-sub">/ 1 000 burpees</p>
@@ -241,7 +243,7 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 
 <!-- RECAP MODAL -->
 <div class="modal-overlay" id="recap-overlay" onclick="closeRecap(event)">
-  <div class="modal" id="recap-modal">
+  <div class="modal">
     <div class="modal-handle"></div>
     <div class="modal-name" id="recap-name">—</div>
     <div class="modal-sub" id="recap-sub">—</div>
@@ -275,9 +277,18 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
     <div class="celeb-title" id="celeb-name">Bravo !</div>
     <div class="celeb-time" id="celeb-time"></div>
     <div class="celeb-sub">1 000 burpees complétés !</div>
-    <button class="celeb-btn" onclick="closeCeleb()">Continuer</button>
+    <div class="celeb-btns">
+      <button class="celeb-btn-insta" onclick="generateShareCard()" id="insta-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Télécharger ma carte Instagram
+      </button>
+      <button class="celeb-btn" onclick="closeCeleb()">Continuer</button>
+    </div>
   </div>
 </div>
+
+<!-- CANVAS for share card -->
+<canvas id="share-canvas" width="1080" height="1080"></canvas>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -300,26 +311,24 @@ const GOAL = 1000;
 const ADMIN_PASSWORD = "admin1000";
 let pseudo='', teamType='solo', partner='', total=0, history=[];
 let sessionStart=null, allPlayers=[], filterMode='all', celebratedLocal=false;
+let celebName='', celebTime=0;
 
 // ── HELPERS ──
-function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function fmtTime(ms){
   if(!ms||ms<=0) return '—';
   const s=Math.floor(ms/1000);
-  const h=Math.floor(s/3600);
-  const m=Math.floor((s%3600)/60);
-  const sec=s%60;
+  const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;
   if(h>0) return h+'h'+String(m).padStart(2,'0')+'m'+String(sec).padStart(2,'0')+'s';
   return String(m).padStart(2,'0')+'m'+String(sec).padStart(2,'0')+'s';
 }
 
 window.showScreen=function(id){
-  document.getElementById('screen-setup').style.display='none';
-  document.getElementById('screen-app').style.display='none';
-  document.getElementById('screen-admin').style.display='none';
-  const el=document.getElementById('screen-'+id);
-  el.style.display = id==='admin' ? 'flex' : 'block';
+  ['setup','app','admin'].forEach(s=>{
+    const el=document.getElementById('screen-'+s);
+    if(s===id) el.style.display=s==='admin'?'flex':'block';
+    else el.style.display='none';
+  });
 };
 
 // ── SETUP ──
@@ -350,8 +359,11 @@ window.startApp=async function(){
   history=JSON.parse(localStorage.getItem('burpees_h_'+pseudo)||'[]');
   sessionStart=Date.now();
 
-  document.getElementById('my-name').textContent=pseudo;
-  document.getElementById('my-badge').textContent=teamType==='duo'?(partner?'Duo · '+partner:'Duo'):'Solo';
+  // Display name: "P1 & P2" for duo, just pseudo for solo
+  const displayName = teamType==='duo'&&partner ? pseudo+' & '+partner : pseudo;
+  document.getElementById('my-name').textContent=displayName;
+  document.getElementById('my-badge').textContent=teamType==='duo'?'Duo':'Solo';
+
   showScreen('app');
   startTimer();
   render();
@@ -361,21 +373,22 @@ window.startApp=async function(){
 // ── ADMIN LOGIN ──
 window.showAdminLogin=function(){showScreen('admin');};
 window.checkAdmin=function(){
-  if(document.getElementById('admin-pw-input').value===ADMIN_PASSWORD){
+  const pw=document.getElementById('admin-pw-input').value;
+  if(pw===ADMIN_PASSWORD){
+    document.getElementById('admin-pw-input').value='';
     showScreen('app');
-    // start lb if not already started
     if(!allPlayers.length) listenLB();
-    openAdminModal();
+    setTimeout(openAdminModal,300);
   } else {
     document.getElementById('admin-pw-input').value='';
-    document.getElementById('admin-pw-input').placeholder='Mot de passe incorrect';
+    document.getElementById('admin-pw-input').placeholder='Mot de passe incorrect ✗';
   }
 };
 
 // ── SESSION TIMER ──
 function startTimer(){
   setInterval(()=>{
-    if(!sessionStart) return;
+    if(!sessionStart)return;
     const s=Math.floor((Date.now()-sessionStart)/1000);
     document.getElementById('timer').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
   },1000);
@@ -392,11 +405,23 @@ function render(){
 
 // ── SAVE ──
 async function save(finishTime){
-  const data={name:pseudo,total,teamType,partner:partner||'',updatedAt:Date.now()};
-  if(finishTime) data.finishTime=finishTime;
-  // preserve existing finishTime if already set
-  const snap=await getDoc(doc(db,'challengers',pseudo));
-  if(snap.exists()&&snap.data().finishTime&&!finishTime) data.finishTime=snap.data().finishTime;
+  // Build display name for leaderboard
+  const displayName = teamType==='duo'&&partner ? pseudo+' & '+partner : pseudo;
+  const data={
+    name:pseudo,
+    displayName,
+    total,
+    teamType,
+    partner:partner||'',
+    updatedAt:Date.now()
+  };
+  // Preserve existing finishTime unless we're setting a new one
+  if(finishTime){
+    data.finishTime=finishTime;
+  } else {
+    const snap=await getDoc(doc(db,'challengers',pseudo));
+    if(snap.exists()&&snap.data().finishTime) data.finishTime=snap.data().finishTime;
+  }
   await setDoc(doc(db,'challengers',pseudo),data);
   localStorage.setItem('burpees_h_'+pseudo,JSON.stringify(history));
 }
@@ -411,7 +436,9 @@ window.add=function(n){
   if(total>=GOAL&&!celebratedLocal){
     celebratedLocal=true;
     finishTime=Date.now()-sessionStart;
-    celebrate(pseudo,finishTime);
+    celebName=pseudo+(partner?' & '+partner:'');
+    celebTime=finishTime;
+    celebrate(celebName,finishTime,false);
   }
   save(finishTime);
 };
@@ -439,8 +466,6 @@ window.setFilter=function(mode,btn){
 };
 
 // ── SORT ──
-// Done players: sorted by finishTime ASC (faster = better)
-// In-progress: sorted by total DESC
 function sortPlayers(players){
   const done=players.filter(p=>p.total>=GOAL).sort((a,b)=>(a.finishTime||Infinity)-(b.finishTime||Infinity));
   const inProgress=players.filter(p=>p.total<GOAL).sort((a,b)=>b.total-a.total);
@@ -456,7 +481,8 @@ function listenLB(){
     allPlayers.forEach(p=>{
       if(p.total>=GOAL&&!celebratedRemote.has(p.name)&&p.name!==pseudo){
         celebratedRemote.add(p.name);
-        celebrate(p.name,p.finishTime||null,true);
+        const dn=p.displayName||p.name;
+        celebrate(dn,p.finishTime||null,true);
       }
       if(p.total>=GOAL) celebratedRemote.add(p.name);
     });
@@ -478,22 +504,20 @@ function renderLB(players){
     const done=p.total>=GOAL;
     const barW=Math.round((p.total/maxScore)*100);
     const rankClass=i===0?'gold':i===1?'silver':i===2?'bronze':'';
+    const displayName=p.displayName||p.name;
     const timeHtml=done
-      ? `<span class="lb-time">${fmtTime(p.finishTime)}</span>`
-      : `<span class="lb-time-pending">${p.total} / ${GOAL}</span>`;
+      ?`<span class="lb-time">${fmtTime(p.finishTime)}</span>`
+      :`<span class="lb-time-pending">${p.total} / ${GOAL}</span>`;
     const row=document.createElement('div');
     row.className='lb-row'+(isMe?' me':'')+(done?' done-row':'');
-    row.onclick=()=>openRecap(p,i+1,sorted);
+    row.onclick=()=>openRecap(p,i+1);
     row.innerHTML=
       `<span class="lb-rank ${rankClass}">${i+1}</span>`+
       `<div class="lb-info">`+
-        `<div class="lb-name">${esc(p.name)}${isMe?' <span style="font-size:10px;opacity:0.45">(moi)</span>':''}</div>`+
-        `<div class="lb-team-tag">${p.teamType==='duo'&&p.partner?'Duo · '+esc(p.partner):'Solo'}</div>`+
+        `<div class="lb-name">${esc(displayName)}${isMe?' <span style="font-size:10px;opacity:0.45;font-weight:400">(moi)</span>':''}</div>`+
+        `<div class="lb-team-tag">${p.teamType==='duo'?'Duo':'Solo'}</div>`+
       `</div>`+
-      `<div class="lb-right">`+
-        timeHtml+
-        `<div class="lb-minibar"><div class="lb-minifill" style="width:${barW}%"></div></div>`+
-      `</div>`;
+      `<div class="lb-right">${timeHtml}<div class="lb-minibar"><div class="lb-minifill" style="width:${barW}%"></div></div></div>`;
     list.appendChild(row);
   });
 }
@@ -501,8 +525,9 @@ function renderLB(players){
 // ── RECAP MODAL ──
 window.openRecap=function(p,rank){
   const pct=Math.round((Math.min(p.total,GOAL)/GOAL)*100);
-  document.getElementById('recap-name').textContent=p.name;
-  document.getElementById('recap-sub').textContent=p.teamType==='duo'&&p.partner?'Duo · '+p.partner:'Solo';
+  const displayName=p.displayName||p.name;
+  document.getElementById('recap-name').textContent=displayName;
+  document.getElementById('recap-sub').textContent=p.teamType==='duo'?'Équipe Duo':'Solo';
   document.getElementById('recap-score').textContent=p.total;
   document.getElementById('recap-score2').textContent=p.total;
   document.getElementById('recap-pct').textContent=pct+'%';
@@ -520,28 +545,48 @@ window.closeRecap=function(e){
 function openAdminModal(){
   const list=document.getElementById('admin-list');
   list.innerHTML='';
-  const sorted=sortPlayers(allPlayers);
+  if(!allPlayers.length){
+    list.innerHTML='<p style="font-size:13px;color:var(--muted);text-align:center;padding:1rem">Aucun participant encore</p>';
+  }
+  const sorted=sortPlayers([...allPlayers]);
   sorted.forEach(p=>{
+    const safeId=p.name.replace(/[^a-zA-Z0-9]/g,'_');
+    const displayName=p.displayName||p.name;
     const row=document.createElement('div');
     row.className='admin-row';
     row.innerHTML=
-      `<span class="admin-rname">${esc(p.name)}</span>`+
-      `<input class="admin-score-input" type="number" min="0" max="1000" value="${p.total}" id="ascore-${esc(p.name)}"/>`+
-      `<button class="admin-save-btn" onclick="adminSave('${esc(p.name)}')">OK</button>`;
+      `<span class="admin-rname">${esc(displayName)}</span>`+
+      `<input class="admin-score-input" type="number" min="0" max="1000" value="${p.total}" id="ascore-${safeId}" data-name="${esc(p.name)}"/>`+
+      `<button class="admin-save-btn" data-safeid="${safeId}">OK</button>`;
     list.appendChild(row);
+  });
+  // Attach events after DOM insertion
+  list.querySelectorAll('.admin-save-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const safeId=btn.getAttribute('data-safeid');
+      const inp=document.getElementById('ascore-'+safeId);
+      const name=inp.getAttribute('data-name');
+      adminSave(name,inp);
+    });
   });
   document.getElementById('admin-overlay').classList.add('open');
 }
-window.adminSave=async function(name){
-  const inp=document.getElementById('ascore-'+name);
+
+async function adminSave(name,inp){
   const val=Math.max(0,Math.min(1000,parseInt(inp.value)||0));
-  const ref=doc(db,'challengers',name);
-  const snap=await getDoc(ref);
-  const update={total:val,updatedAt:Date.now()};
-  if(val>=GOAL&&snap.exists()&&!snap.data().finishTime) update.finishTime=0;
-  await updateDoc(ref,update);
-  toast('Score de '+name+' mis à jour');
-};
+  try{
+    const ref=doc(db,'challengers',name);
+    const snap=await getDoc(ref);
+    if(!snap.exists()){toast('Participant introuvable');return;}
+    const update={total:val,updatedAt:Date.now()};
+    if(val>=GOAL&&!snap.data().finishTime) update.finishTime=1;
+    await updateDoc(ref,update);
+    toast('Score mis à jour ✓');
+  } catch(e){
+    toast('Erreur : '+e.message);
+  }
+}
+
 window.closeAdminModal=function(e){
   if(!e||e.target===document.getElementById('admin-overlay'))
     document.getElementById('admin-overlay').classList.remove('open');
@@ -550,8 +595,10 @@ window.closeAdminModal=function(e){
 // ── CELEBRATION ──
 function celebrate(name,finishTime,isRemote){
   if(isRemote&&document.getElementById('celebration').classList.contains('show')) return;
-  document.getElementById('celeb-name').textContent=name===pseudo?'Bravo '+name+' !':name+' a terminé !';
+  document.getElementById('celeb-name').textContent=(!isRemote&&name.includes(pseudo))?'Bravo '+name+' !':name+' a terminé !';
   document.getElementById('celeb-time').textContent=finishTime?fmtTime(finishTime):'';
+  // Show/hide insta button only for self
+  document.getElementById('insta-btn').style.display=isRemote?'none':'flex';
   document.getElementById('celebration').classList.add('show');
   launchConfetti();
 }
@@ -567,6 +614,91 @@ function launchConfetti(){
     setTimeout(()=>el.remove(),4000);
   }
 }
+
+// ── INSTAGRAM SHARE CARD ──
+window.generateShareCard=function(){
+  const canvas=document.getElementById('share-canvas');
+  const ctx=canvas.getContext('2d');
+  const W=1080,H=1080;
+
+  // Background
+  ctx.fillStyle='#09090f';
+  ctx.fillRect(0,0,W,H);
+
+  // Gradient top bar
+  const bar=ctx.createLinearGradient(0,0,W,0);
+  bar.addColorStop(0,'#7c6fff');
+  bar.addColorStop(1,'#ff6fd8');
+  ctx.fillStyle=bar;
+  ctx.fillRect(0,0,W,8);
+
+  // Subtle glow circle
+  const glow=ctx.createRadialGradient(W/2,300,0,W/2,300,500);
+  glow.addColorStop(0,'rgba(124,111,255,0.15)');
+  glow.addColorStop(1,'rgba(124,111,255,0)');
+  ctx.fillStyle=glow;
+  ctx.fillRect(0,0,W,H);
+
+  // Event info
+  ctx.fillStyle='rgba(160,140,255,0.5)';
+  ctx.font='500 28px -apple-system,sans-serif';
+  ctx.textAlign='center';
+  ctx.fillText('CrossFit Le Trapèze · 27 mars 2025',W/2,120);
+
+  // Big emoji area
+  ctx.font='120px serif';
+  ctx.textAlign='center';
+  ctx.fillText('🏆',W/2,290);
+
+  // Name
+  const grad=ctx.createLinearGradient(200,0,880,0);
+  grad.addColorStop(0,'#7c6fff');
+  grad.addColorStop(1,'#ff6fd8');
+  ctx.fillStyle=grad;
+  ctx.font='700 80px -apple-system,sans-serif';
+  ctx.textAlign='center';
+  const displayN=celebName||(pseudo+(partner?' & '+partner:''));
+  // Truncate if too long
+  let nameText=displayN;
+  ctx.font='700 72px -apple-system,sans-serif';
+  while(ctx.measureText(nameText).width>900&&nameText.length>3) nameText=nameText.slice(0,-1)+'…';
+  ctx.fillText(nameText,W/2,420);
+
+  // "a terminé"
+  ctx.fillStyle='rgba(240,238,255,0.7)';
+  ctx.font='400 36px -apple-system,sans-serif';
+  ctx.fillText('a relevé le challenge',W/2,490);
+
+  // 1000 Burpees big
+  ctx.fillStyle=grad;
+  ctx.font='700 140px -apple-system,sans-serif';
+  ctx.fillText('1000',W/2,660);
+  ctx.fillStyle='rgba(240,238,255,0.9)';
+  ctx.font='500 52px -apple-system,sans-serif';
+  ctx.fillText('BURPEES ✅',W/2,730);
+
+  // Time
+  if(celebTime){
+    ctx.fillStyle='#ff6fd8';
+    ctx.font='700 56px -apple-system,sans-serif';
+    ctx.fillText(fmtTime(celebTime),W/2,830);
+    ctx.fillStyle='rgba(160,140,255,0.6)';
+    ctx.font='400 28px -apple-system,sans-serif';
+    ctx.fillText('temps total',W/2,876);
+  }
+
+  // Bottom branding
+  ctx.fillStyle='rgba(160,140,255,0.4)';
+  ctx.font='400 26px -apple-system,sans-serif';
+  ctx.fillText('#1000BurpeesChallenge #CrossFitLeTrapèze',W/2,980);
+
+  // Download
+  const link=document.createElement('a');
+  link.download='1000-burpees-done.png';
+  link.href=canvas.toDataURL('image/png');
+  link.click();
+  toast('Image téléchargée ! Poste-la sur Instagram 📸');
+};
 
 // ── INIT ──
 showScreen('setup');
