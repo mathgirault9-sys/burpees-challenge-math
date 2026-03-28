@@ -19,9 +19,9 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 ::-webkit-scrollbar{width:4px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:99px;}
 .glow-bg{position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(124,111,255,0.12) 0%,transparent 70%);pointer-events:none;z-index:0;}
 .screen{position:relative;z-index:1;}
-#screen-setup,#screen-app,#screen-admin{display:none;}
+#screen-setup,#screen-app,#screen-admin,#screen-tv{display:none;}
 
-/* SETUP */
+/* ══ SETUP ══ */
 #screen-setup{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:2rem;}
 .event-banner{background:var(--bg2);border:0.5px solid var(--border2);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;width:100%;max-width:400px;margin-bottom:1.5rem;display:flex;align-items:center;gap:12px;}
 .event-icon{width:40px;height:40px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0;}
@@ -41,13 +41,16 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .btn-join:hover{opacity:0.88;}.btn-join:active{transform:scale(0.98);}
 .admin-link{margin-top:1rem;text-align:center;font-size:12px;color:var(--muted);cursor:pointer;text-decoration:underline;}
 
-/* APP */
+/* ══ APP ══ */
 #screen-app{padding-bottom:5rem;}
 .app-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.25rem 0;margin-bottom:1.5rem;}
 .app-logo{font-size:13px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.header-right{display:flex;align-items:center;gap:8px;}
 .session-pill{display:flex;align-items:center;gap:6px;background:var(--bg2);border:0.5px solid var(--border2);border-radius:99px;padding:5px 12px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;}
 .pulse-dot{width:6px;height:6px;border-radius:50%;background:var(--g2);animation:pulse 1.5s infinite;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
+.tv-btn{padding:5px 12px;font-size:12px;background:var(--bg2);border:0.5px solid var(--border2);border-radius:99px;color:var(--muted);cursor:pointer;transition:all 0.15s;}
+.tv-btn:hover{border-color:var(--g1);color:var(--text);}
 
 /* MY CARD */
 .my-section{padding:0 1.25rem 1rem;}
@@ -61,6 +64,8 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .progress-track{height:6px;background:var(--bg3);border-radius:99px;overflow:hidden;margin-bottom:6px;}
 .progress-fill{height:100%;background:var(--grad);border-radius:99px;transition:width 0.4s cubic-bezier(.4,0,.2,1);}
 .progress-row{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);}
+.insta-done-btn{width:100%;margin-top:1rem;padding:11px;font-size:13px;font-weight:500;background:var(--grad-dim);border:0.5px solid rgba(124,111,255,0.3);border-radius:var(--radius);color:var(--g1);cursor:pointer;display:none;align-items:center;justify-content:center;gap:6px;transition:background 0.15s;}
+.insta-done-btn:hover{background:rgba(124,111,255,0.2);}
 
 /* BUTTONS */
 .btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:0 1.25rem;}
@@ -101,7 +106,7 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .lb-row.me .lb-minifill{background:var(--g1);}
 .lb-row.done-row .lb-minifill{background:var(--g2);}
 
-/* RECAP MODAL */
+/* ══ RECAP MODAL ══ */
 .modal-overlay{position:fixed;inset:0;background:rgba(9,9,15,0.85);z-index:100;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.25s;}
 .modal-overlay.open{opacity:1;pointer-events:all;}
 .modal{background:var(--bg2);border:0.5px solid var(--border2);border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:1.5rem;width:100%;max-width:480px;transform:translateY(30px);transition:transform 0.3s cubic-bezier(.4,0,.2,1);}
@@ -116,22 +121,31 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .modal-progress-track{height:8px;background:var(--bg3);border-radius:99px;overflow:hidden;margin-bottom:8px;}
 .modal-progress-fill{height:100%;background:var(--grad);border-radius:99px;transition:width 0.6s cubic-bezier(.4,0,.2,1);}
 .modal-progress-lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);}
-.modal-close{width:100%;margin-top:1.25rem;padding:13px;font-size:14px;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius);color:var(--muted);cursor:pointer;transition:background 0.15s;}
+.modal-insta-btn{width:100%;margin-top:1rem;padding:13px;font-size:14px;font-weight:500;background:var(--grad-dim);border:0.5px solid rgba(124,111,255,0.3);border-radius:var(--radius);color:var(--g1);cursor:pointer;display:none;align-items:center;justify-content:center;gap:8px;transition:background 0.15s;}
+.modal-insta-btn:hover{background:rgba(124,111,255,0.2);}
+.modal-close{width:100%;margin-top:0.75rem;padding:13px;font-size:14px;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius);color:var(--muted);cursor:pointer;transition:background 0.15s;}
 .modal-close:hover{background:var(--bg4);}
 
-/* ADMIN MODAL */
-.admin-modal{background:var(--bg2);border:0.5px solid var(--border2);border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:1.5rem;width:100%;max-width:480px;transform:translateY(30px);transition:transform 0.3s cubic-bezier(.4,0,.2,1);max-height:85vh;overflow-y:auto;}
+/* ══ ADMIN MODAL ══ */
+.admin-modal{background:var(--bg2);border:0.5px solid var(--border2);border-radius:var(--radius-lg) var(--radius-lg) 0 0;padding:1.5rem;width:100%;max-width:520px;transform:translateY(30px);transition:transform 0.3s cubic-bezier(.4,0,.2,1);max-height:90vh;overflow-y:auto;}
 .modal-overlay.open .admin-modal{transform:translateY(0);}
 .admin-title{font-size:18px;font-weight:700;margin-bottom:4px;}
-.admin-sub{font-size:13px;color:var(--muted);margin-bottom:1.5rem;}
-.admin-row{display:flex;align-items:center;gap:8px;background:var(--bg3);border-radius:var(--radius);padding:10px 12px;margin-bottom:6px;}
+.admin-sub{font-size:13px;color:var(--muted);margin-bottom:1.25rem;}
+.admin-add-row{display:flex;gap:8px;margin-bottom:1.25rem;padding-bottom:1.25rem;border-bottom:0.5px solid var(--border);}
+.admin-add-row input{flex:1;padding:10px 12px;font-size:13px;background:var(--bg3);border:0.5px solid var(--border2);border-radius:8px;color:var(--text);outline:none;}
+.admin-add-row input:focus{border-color:var(--g1);}
+.admin-add-btn{padding:10px 16px;font-size:13px;font-weight:600;background:var(--grad);color:#fff;border:none;border-radius:8px;cursor:pointer;white-space:nowrap;}
+.admin-row{display:flex;align-items:center;gap:6px;background:var(--bg3);border-radius:var(--radius);padding:10px 12px;margin-bottom:6px;}
 .admin-rname{flex:1;font-size:13px;font-weight:500;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.admin-score-input{width:64px;padding:7px 8px;font-size:14px;background:var(--bg4);border:0.5px solid var(--border2);border-radius:8px;color:var(--text);outline:none;text-align:center;}
-.admin-score-input:focus{border-color:var(--g1);}
-.admin-save-btn{padding:7px 14px;font-size:13px;font-weight:600;background:var(--grad);color:#fff;border:none;border-radius:8px;cursor:pointer;white-space:nowrap;}
-.admin-save-btn:active{opacity:0.8;}
+.admin-input{padding:7px 8px;font-size:13px;background:var(--bg4);border:0.5px solid var(--border2);border-radius:8px;color:var(--text);outline:none;text-align:center;}
+.admin-input:focus{border-color:var(--g1);}
+.admin-input-score{width:58px;}
+.admin-input-time{width:90px;}
+.admin-save-btn{padding:7px 10px;font-size:12px;font-weight:600;background:var(--grad);color:#fff;border:none;border-radius:8px;cursor:pointer;white-space:nowrap;}
+.admin-del-btn{padding:7px 10px;font-size:12px;background:rgba(163,45,45,0.2);color:#f09595;border:0.5px solid rgba(163,45,45,0.3);border-radius:8px;cursor:pointer;}
+.admin-del-btn:hover{background:rgba(163,45,45,0.35);}
 
-/* CELEBRATION */
+/* ══ CELEBRATION ══ */
 #celebration{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:rgba(9,9,15,0.92);opacity:0;pointer-events:none;transition:opacity 0.4s;}
 #celebration.show{opacity:1;pointer-events:all;}
 .celeb-card{background:var(--bg2);border:0.5px solid var(--border2);border-radius:var(--radius-lg);padding:2.5rem 2rem;text-align:center;max-width:320px;width:90%;transform:scale(0.8);transition:transform 0.4s cubic-bezier(.34,1.56,.64,1);}
@@ -142,11 +156,40 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .celeb-time{font-size:32px;font-weight:700;color:var(--g2);margin:8px 0;font-variant-numeric:tabular-nums;}
 .celeb-sub{font-size:14px;color:var(--muted);margin-bottom:1.5rem;}
 .celeb-btns{display:flex;flex-direction:column;gap:8px;}
-.celeb-btn{padding:13px 28px;font-size:14px;font-weight:700;background:var(--grad);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;}
-.celeb-btn-insta{padding:13px 28px;font-size:14px;font-weight:600;background:var(--bg3);color:var(--text);border:0.5px solid var(--border2);border-radius:var(--radius);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
+.celeb-btn{padding:13px;font-size:14px;font-weight:700;background:var(--grad);color:#fff;border:none;border-radius:var(--radius);cursor:pointer;}
+.celeb-btn-insta{padding:13px;font-size:14px;font-weight:500;background:var(--bg3);color:var(--text);border:0.5px solid var(--border2);border-radius:var(--radius);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;}
 .celeb-btn-insta:hover{background:var(--bg4);}
 .confetti-piece{position:fixed;width:8px;height:8px;border-radius:2px;opacity:0;pointer-events:none;z-index:201;animation:confetti-fall 2.5s ease-in forwards;}
 @keyframes confetti-fall{0%{opacity:1;transform:translateY(-10px) rotate(0deg);}100%{opacity:0;transform:translateY(100vh) rotate(720deg);}}
+
+/* ══ TV SCREEN ══ */
+#screen-tv{min-height:100vh;background:var(--bg);padding:2rem;display:none;flex-direction:column;}
+.tv-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;}
+.tv-logo{font-size:28px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.tv-event{font-size:16px;color:var(--muted);}
+.tv-close{padding:8px 18px;font-size:13px;background:var(--bg2);border:0.5px solid var(--border2);border-radius:99px;color:var(--muted);cursor:pointer;}
+.tv-close:hover{border-color:var(--g1);color:var(--text);}
+.tv-list{display:flex;flex-direction:column;gap:12px;flex:1;}
+.tv-row{display:flex;align-items:center;gap:16px;background:var(--bg2);border:0.5px solid var(--border);border-radius:var(--radius-lg);padding:16px 20px;transition:all 0.6s cubic-bezier(.4,0,.2,1);}
+.tv-row.done-row{border-color:rgba(255,111,216,0.3);}
+.tv-rank{font-size:20px;font-weight:700;width:36px;text-align:center;flex-shrink:0;font-variant-numeric:tabular-nums;}
+.tv-rank.gold{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.tv-rank.silver{color:#c0c0c0;}
+.tv-rank.bronze{color:#cd7f32;}
+.tv-rank.other{color:var(--muted);}
+.tv-info{flex:1;min-width:0;}
+.tv-name{font-size:22px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.tv-type{font-size:13px;color:var(--muted);margin-top:2px;}
+.tv-bar-wrap{flex:2;display:flex;flex-direction:column;gap:5px;}
+.tv-bar-track{height:8px;background:var(--bg3);border-radius:99px;overflow:hidden;}
+.tv-bar-fill{height:100%;border-radius:99px;transition:width 0.8s cubic-bezier(.4,0,.2,1);}
+.tv-bar-fill.in-progress{background:var(--g1);}
+.tv-bar-fill.done{background:var(--grad);}
+.tv-bar-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);}
+.tv-score-col{text-align:right;flex-shrink:0;min-width:120px;}
+.tv-score{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;}
+.tv-score.done{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.tv-time{font-size:14px;color:var(--g2);font-weight:600;margin-top:2px;font-variant-numeric:tabular-nums;}
 
 /* ADMIN LOGIN */
 #screen-admin{min-height:100vh;display:none;align-items:center;justify-content:center;padding:2rem;}
@@ -156,14 +199,13 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .admin-login-card input{width:100%;padding:13px 14px;font-size:15px;background:var(--bg3);border:0.5px solid var(--border2);border-radius:var(--radius);color:var(--text);outline:none;margin-bottom:12px;}
 .admin-login-card input:focus{border-color:var(--g1);}
 
-/* CANVAS HIDDEN */
 #share-canvas{display:none;}
 </style>
 </head>
 <body>
 <div class="glow-bg"></div>
 
-<!-- SETUP -->
+<!-- ══ SETUP ══ -->
 <div id="screen-setup" class="screen">
   <div class="event-banner">
     <div class="event-icon">🏋️</div>
@@ -191,11 +233,14 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
   </div>
 </div>
 
-<!-- APP -->
+<!-- ══ APP ══ -->
 <div id="screen-app" class="screen">
   <div class="app-header">
     <span class="app-logo">1000 Burpees</span>
-    <div class="session-pill"><div class="pulse-dot"></div><span id="timer">00:00</span></div>
+    <div class="header-right">
+      <button class="tv-btn" onclick="showTV()">📺 Vue TV</button>
+      <div class="session-pill"><div class="pulse-dot"></div><span id="timer">00:00</span></div>
+    </div>
   </div>
   <div class="my-section">
     <div class="my-card">
@@ -207,6 +252,10 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
       <p class="my-sub">/ 1 000 burpees</p>
       <div class="progress-track"><div class="progress-fill" id="my-bar" style="width:0%"></div></div>
       <div class="progress-row"><span id="my-pct">0 %</span><span>1 000</span></div>
+      <button class="insta-done-btn" id="my-insta-btn" onclick="generateShareCard()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Télécharger ma carte Instagram
+      </button>
     </div>
   </div>
   <div class="btns" style="margin-top:1rem;">
@@ -230,7 +279,7 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
   </div>
 </div>
 
-<!-- ADMIN LOGIN -->
+<!-- ══ ADMIN LOGIN ══ -->
 <div id="screen-admin" class="screen">
   <div class="admin-login-card">
     <h2>Accès admin</h2>
@@ -241,7 +290,19 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
   </div>
 </div>
 
-<!-- RECAP MODAL -->
+<!-- ══ TV ══ -->
+<div id="screen-tv" class="screen">
+  <div class="tv-header">
+    <div>
+      <div class="tv-logo">1000 Burpees Challenge</div>
+      <div class="tv-event">CrossFit Le Trapèze · 27 mars 2025</div>
+    </div>
+    <button class="tv-close" onclick="hideTV()">← Retour</button>
+  </div>
+  <div class="tv-list" id="tv-list"></div>
+</div>
+
+<!-- ══ RECAP MODAL ══ -->
 <div class="modal-overlay" id="recap-overlay" onclick="closeRecap(event)">
   <div class="modal">
     <div class="modal-handle"></div>
@@ -255,22 +316,30 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
     </div>
     <div class="modal-progress-track"><div class="modal-progress-fill" id="recap-bar" style="width:0%"></div></div>
     <div class="modal-progress-lbl"><span id="recap-score2">0</span><span>1 000</span></div>
+    <button class="modal-insta-btn" id="recap-insta-btn" onclick="generateShareCardFor()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      Télécharger ma carte Instagram
+    </button>
     <button class="modal-close" onclick="closeRecap()">Fermer</button>
   </div>
 </div>
 
-<!-- ADMIN MODAL -->
+<!-- ══ ADMIN MODAL ══ -->
 <div class="modal-overlay" id="admin-overlay" onclick="closeAdminModal(event)">
   <div class="admin-modal">
     <div class="modal-handle"></div>
     <div class="admin-title">Mode admin</div>
-    <div class="admin-sub">Modifie manuellement les scores</div>
+    <div class="admin-sub">Modifier scores, temps · Ajouter ou supprimer un participant</div>
+    <div class="admin-add-row">
+      <input type="text" id="admin-add-name" placeholder="Nouveau participant" maxlength="30"/>
+      <button class="admin-add-btn" onclick="adminAdd()">+ Ajouter</button>
+    </div>
     <div id="admin-list"></div>
-    <button class="modal-close" onclick="closeAdminModal()">Fermer</button>
+    <button class="modal-close" onclick="closeAdminModal()" style="margin-top:1rem;">Fermer</button>
   </div>
 </div>
 
-<!-- CELEBRATION -->
+<!-- ══ CELEBRATION ══ -->
 <div id="celebration">
   <div class="celeb-card">
     <span class="celeb-emoji">🎉</span>
@@ -278,7 +347,7 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
     <div class="celeb-time" id="celeb-time"></div>
     <div class="celeb-sub">1 000 burpees complétés !</div>
     <div class="celeb-btns">
-      <button class="celeb-btn-insta" onclick="generateShareCard()" id="insta-btn">
+      <button class="celeb-btn-insta" id="celeb-insta-btn" onclick="generateShareCard()">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
         Télécharger ma carte Instagram
       </button>
@@ -287,12 +356,11 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
   </div>
 </div>
 
-<!-- CANVAS for share card -->
 <canvas id="share-canvas" width="1080" height="1080"></canvas>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore,doc,setDoc,getDoc,onSnapshot,collection,updateDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getFirestore,doc,setDoc,getDoc,onSnapshot,collection,updateDoc,deleteDoc,addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBkN46-yiDnPEJ0OLkdBGW_XXjWVF57rEA",
@@ -311,10 +379,13 @@ const GOAL = 1000;
 const ADMIN_PASSWORD = "admin1000";
 let pseudo='', teamType='solo', partner='', total=0, history=[];
 let sessionStart=null, allPlayers=[], filterMode='all', celebratedLocal=false;
-let celebName='', celebTime=0;
+let celebName='', celebFinishTime=0;
+let recapPlayer=null;
+let lbUnsubscribe=null;
 
 // ── HELPERS ──
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
 function fmtTime(ms){
   if(!ms||ms<=0) return '—';
   const s=Math.floor(ms/1000);
@@ -323,13 +394,29 @@ function fmtTime(ms){
   return String(m).padStart(2,'0')+'m'+String(sec).padStart(2,'0')+'s';
 }
 
+// Parse "1h23m45s" or "23m45s" or "45s" → ms
+function parseTime(str){
+  if(!str||!str.trim()) return 0;
+  const h=(str.match(/(\d+)h/)||[0,0])[1];
+  const m=(str.match(/(\d+)m/)||[0,0])[1];
+  const s=(str.match(/(\d+)s/)||[0,0])[1];
+  return (parseInt(h)*3600+parseInt(m)*60+parseInt(s))*1000;
+}
+
 window.showScreen=function(id){
-  ['setup','app','admin'].forEach(s=>{
+  ['setup','app','admin','tv'].forEach(s=>{
     const el=document.getElementById('screen-'+s);
-    if(s===id) el.style.display=s==='admin'?'flex':'block';
+    if(!el) return;
+    if(s===id) el.style.display=(s==='admin'||s==='tv')?'flex':'block';
     else el.style.display='none';
   });
 };
+
+window.showTV=function(){
+  showScreen('tv');
+  renderTV(allPlayers);
+};
+window.hideTV=function(){showScreen('app');};
 
 // ── SETUP ──
 window.setTeamType=function(t){
@@ -359,25 +446,29 @@ window.startApp=async function(){
   history=JSON.parse(localStorage.getItem('burpees_h_'+pseudo)||'[]');
   sessionStart=Date.now();
 
-  // Display name: "P1 & P2" for duo, just pseudo for solo
-  const displayName = teamType==='duo'&&partner ? pseudo+' & '+partner : pseudo;
+  const displayName=teamType==='duo'&&partner?pseudo+' & '+partner:pseudo;
   document.getElementById('my-name').textContent=displayName;
   document.getElementById('my-badge').textContent=teamType==='duo'?'Duo':'Solo';
 
   showScreen('app');
   startTimer();
   render();
-  listenLB();
+  // Show insta btn if already done
+  if(total>=GOAL){
+    const btn=document.getElementById('my-insta-btn');
+    btn.style.display='flex';
+  }
+  startListening();
 };
 
-// ── ADMIN LOGIN ──
+// ── ADMIN ──
 window.showAdminLogin=function(){showScreen('admin');};
 window.checkAdmin=function(){
   const pw=document.getElementById('admin-pw-input').value;
   if(pw===ADMIN_PASSWORD){
     document.getElementById('admin-pw-input').value='';
     showScreen('app');
-    if(!allPlayers.length) listenLB();
+    if(!lbUnsubscribe) startListening();
     setTimeout(openAdminModal,300);
   } else {
     document.getElementById('admin-pw-input').value='';
@@ -385,42 +476,37 @@ window.checkAdmin=function(){
   }
 };
 
-// ── SESSION TIMER ──
+// ── TIMER ──
 function startTimer(){
   setInterval(()=>{
-    if(!sessionStart)return;
+    if(!sessionStart) return;
     const s=Math.floor((Date.now()-sessionStart)/1000);
     document.getElementById('timer').textContent=String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');
   },1000);
 }
 
-// ── RENDER ──
+// ── RENDER MY CARD ──
 function render(){
   const n=Math.min(total,GOAL);
   document.getElementById('my-count').textContent=total.toLocaleString('fr-FR');
   const pct=Math.round(n/(GOAL/100));
   document.getElementById('my-bar').style.width=pct+'%';
   document.getElementById('my-pct').textContent=pct+' %';
+  const instabtn=document.getElementById('my-insta-btn');
+  if(instabtn) instabtn.style.display=total>=GOAL?'flex':'none';
 }
 
 // ── SAVE ──
 async function save(finishTime){
-  // Build display name for leaderboard
-  const displayName = teamType==='duo'&&partner ? pseudo+' & '+partner : pseudo;
-  const data={
-    name:pseudo,
-    displayName,
-    total,
-    teamType,
-    partner:partner||'',
-    updatedAt:Date.now()
-  };
-  // Preserve existing finishTime unless we're setting a new one
+  const displayName=teamType==='duo'&&partner?pseudo+' & '+partner:pseudo;
+  const data={name:pseudo,displayName,total,teamType,partner:partner||'',updatedAt:Date.now()};
   if(finishTime){
     data.finishTime=finishTime;
   } else {
-    const snap=await getDoc(doc(db,'challengers',pseudo));
-    if(snap.exists()&&snap.data().finishTime) data.finishTime=snap.data().finishTime;
+    try{
+      const snap=await getDoc(doc(db,'challengers',pseudo));
+      if(snap.exists()&&snap.data().finishTime) data.finishTime=snap.data().finishTime;
+    }catch(e){}
   }
   await setDoc(doc(db,'challengers',pseudo),data);
   localStorage.setItem('burpees_h_'+pseudo,JSON.stringify(history));
@@ -437,7 +523,7 @@ window.add=function(n){
     celebratedLocal=true;
     finishTime=Date.now()-sessionStart;
     celebName=pseudo+(partner?' & '+partner:'');
-    celebTime=finishTime;
+    celebFinishTime=finishTime;
     celebrate(celebName,finishTime,false);
   }
   save(finishTime);
@@ -465,31 +551,46 @@ window.setFilter=function(mode,btn){
   renderLB(allPlayers);
 };
 
-// ── SORT ──
+// ── SORT: done by time ASC, then in-progress by total DESC ──
 function sortPlayers(players){
   const done=players.filter(p=>p.total>=GOAL).sort((a,b)=>(a.finishTime||Infinity)-(b.finishTime||Infinity));
-  const inProgress=players.filter(p=>p.total<GOAL).sort((a,b)=>b.total-a.total);
-  return [...done,...inProgress];
+  const prog=players.filter(p=>p.total<GOAL).sort((a,b)=>b.total-a.total);
+  return [...done,...prog];
 }
 
-// ── LIVE LEADERBOARD ──
-const celebratedRemote=new Set();
-function listenLB(){
-  onSnapshot(collection(db,'challengers'),snap=>{
+// ── LISTEN ──
+function startListening(){
+  if(lbUnsubscribe) return;
+  // Record which players were already done when we join, to avoid spurious popups
+  let initialized=false;
+  const alreadyDoneAtJoin=new Set();
+
+  lbUnsubscribe=onSnapshot(collection(db,'challengers'),snap=>{
     allPlayers=[];
     snap.forEach(d=>allPlayers.push(d.data()));
-    allPlayers.forEach(p=>{
-      if(p.total>=GOAL&&!celebratedRemote.has(p.name)&&p.name!==pseudo){
-        celebratedRemote.add(p.name);
-        const dn=p.displayName||p.name;
-        celebrate(dn,p.finishTime||null,true);
-      }
-      if(p.total>=GOAL) celebratedRemote.add(p.name);
-    });
+
+    if(!initialized){
+      // Mark everyone currently done as already done — no popup for them
+      allPlayers.forEach(p=>{ if(p.total>=GOAL) alreadyDoneAtJoin.add(p.name); });
+      initialized=true;
+    } else {
+      // Only celebrate NEW finishers (not there when we joined, and not ourselves)
+      allPlayers.forEach(p=>{
+        if(p.total>=GOAL && !alreadyDoneAtJoin.has(p.name) && p.name!==pseudo){
+          alreadyDoneAtJoin.add(p.name);
+          // Don't pop up celebration for remote finishers — just toast
+          toast('🎉 '+( p.displayName||p.name)+' a terminé !');
+        }
+        if(p.total>=GOAL) alreadyDoneAtJoin.add(p.name);
+      });
+    }
+
     renderLB(allPlayers);
+    renderTV(allPlayers);
   });
 }
 
+// ── RENDER LB ──
 function renderLB(players){
   const filtered=filterMode==='all'?players:players.filter(p=>p.teamType===filterMode);
   const sorted=sortPlayers(filtered);
@@ -513,17 +614,47 @@ function renderLB(players){
     row.onclick=()=>openRecap(p,i+1);
     row.innerHTML=
       `<span class="lb-rank ${rankClass}">${i+1}</span>`+
-      `<div class="lb-info">`+
-        `<div class="lb-name">${esc(displayName)}${isMe?' <span style="font-size:10px;opacity:0.45;font-weight:400">(moi)</span>':''}</div>`+
-        `<div class="lb-team-tag">${p.teamType==='duo'?'Duo':'Solo'}</div>`+
-      `</div>`+
+      `<div class="lb-info"><div class="lb-name">${esc(displayName)}${isMe?' <span style="font-size:10px;opacity:0.45;font-weight:400">(moi)</span>':''}</div>`+
+      `<div class="lb-team-tag">${p.teamType==='duo'?'Duo':'Solo'}</div></div>`+
       `<div class="lb-right">${timeHtml}<div class="lb-minibar"><div class="lb-minifill" style="width:${barW}%"></div></div></div>`;
+    list.appendChild(row);
+  });
+}
+
+// ── RENDER TV ──
+function renderTV(players){
+  const tvEl=document.getElementById('screen-tv');
+  if(!tvEl||tvEl.style.display==='none') return;
+  const sorted=sortPlayers([...players]);
+  const maxScore=Math.max(...sorted.map(p=>p.total),1);
+  const list=document.getElementById('tv-list');
+  list.innerHTML='';
+  sorted.forEach((p,i)=>{
+    const done=p.total>=GOAL;
+    const barW=Math.round((p.total/maxScore)*100);
+    const pct=Math.round((p.total/GOAL)*100);
+    const rankClass=i===0?'gold':i===1?'silver':i===2?'bronze':'other';
+    const displayName=p.displayName||p.name;
+    const row=document.createElement('div');
+    row.className='tv-row'+(done?' done-row':'');
+    row.innerHTML=
+      `<span class="tv-rank ${rankClass}">${i+1}</span>`+
+      `<div class="tv-info"><div class="tv-name">${esc(displayName)}</div><div class="tv-type">${p.teamType==='duo'?'Duo':'Solo'}</div></div>`+
+      `<div class="tv-bar-wrap">`+
+        `<div class="tv-bar-track"><div class="tv-bar-fill ${done?'done':'in-progress'}" style="width:${barW}%"></div></div>`+
+        `<div class="tv-bar-labels"><span>${p.total} burpees</span><span>${pct}%</span></div>`+
+      `</div>`+
+      `<div class="tv-score-col">`+
+        `<div class="tv-score ${done?'done':''}">${done?'✓ 1000':p.total}</div>`+
+        `${done&&p.finishTime?`<div class="tv-time">${fmtTime(p.finishTime)}</div>`:''}` +
+      `</div>`;
     list.appendChild(row);
   });
 }
 
 // ── RECAP MODAL ──
 window.openRecap=function(p,rank){
+  recapPlayer=p;
   const pct=Math.round((Math.min(p.total,GOAL)/GOAL)*100);
   const displayName=p.displayName||p.name;
   document.getElementById('recap-name').textContent=displayName;
@@ -534,6 +665,9 @@ window.openRecap=function(p,rank){
   document.getElementById('recap-rank').textContent='#'+rank;
   document.getElementById('recap-time').textContent=p.finishTime?fmtTime(p.finishTime):'—';
   document.getElementById('recap-bar').style.width=pct+'%';
+  // Show insta btn only if this player is done AND is the current user
+  const iBtn=document.getElementById('recap-insta-btn');
+  iBtn.style.display=(p.total>=GOAL&&p.name===pseudo)?'flex':'none';
   document.getElementById('recap-overlay').classList.add('open');
 };
 window.closeRecap=function(e){
@@ -543,48 +677,80 @@ window.closeRecap=function(e){
 
 // ── ADMIN MODAL ──
 function openAdminModal(){
+  buildAdminList();
+  document.getElementById('admin-overlay').classList.add('open');
+}
+
+function buildAdminList(){
   const list=document.getElementById('admin-list');
   list.innerHTML='';
   if(!allPlayers.length){
-    list.innerHTML='<p style="font-size:13px;color:var(--muted);text-align:center;padding:1rem">Aucun participant encore</p>';
+    list.innerHTML='<p style="font-size:13px;color:var(--muted);padding:0.5rem 0">Aucun participant</p>';return;
   }
   const sorted=sortPlayers([...allPlayers]);
   sorted.forEach(p=>{
     const safeId=p.name.replace(/[^a-zA-Z0-9]/g,'_');
     const displayName=p.displayName||p.name;
+    const timeStr=p.finishTime?fmtTime(p.finishTime):'';
     const row=document.createElement('div');
     row.className='admin-row';
     row.innerHTML=
-      `<span class="admin-rname">${esc(displayName)}</span>`+
-      `<input class="admin-score-input" type="number" min="0" max="1000" value="${p.total}" id="ascore-${safeId}" data-name="${esc(p.name)}"/>`+
-      `<button class="admin-save-btn" data-safeid="${safeId}">OK</button>`;
+      `<span class="admin-rname" title="${esc(displayName)}">${esc(displayName)}</span>`+
+      `<input class="admin-input admin-input-score" type="number" min="0" max="1000" value="${p.total}" id="ascore-${safeId}" data-name="${esc(p.name)}" placeholder="Score"/>`+
+      `<input class="admin-input admin-input-time" type="text" value="${timeStr}" id="atime-${safeId}" data-name="${esc(p.name)}" placeholder="0h00m00s"/>`+
+      `<button class="admin-save-btn" data-safeid="${safeId}">OK</button>`+
+      `<button class="admin-del-btn" data-name="${esc(p.name)}">✕</button>`;
     list.appendChild(row);
   });
-  // Attach events after DOM insertion
   list.querySelectorAll('.admin-save-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
-      const safeId=btn.getAttribute('data-safeid');
-      const inp=document.getElementById('ascore-'+safeId);
-      const name=inp.getAttribute('data-name');
-      adminSave(name,inp);
+      const sid=btn.getAttribute('data-safeid');
+      const scoreInp=document.getElementById('ascore-'+sid);
+      const timeInp=document.getElementById('atime-'+sid);
+      adminSave(scoreInp.getAttribute('data-name'),scoreInp,timeInp);
     });
   });
-  document.getElementById('admin-overlay').classList.add('open');
+  list.querySelectorAll('.admin-del-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      adminDelete(btn.getAttribute('data-name'));
+    });
+  });
 }
 
-async function adminSave(name,inp){
-  const val=Math.max(0,Math.min(1000,parseInt(inp.value)||0));
+async function adminSave(name,scoreInp,timeInp){
+  const val=Math.max(0,Math.min(1000,parseInt(scoreInp.value)||0));
+  const timeMs=parseTime(timeInp.value);
   try{
     const ref=doc(db,'challengers',name);
-    const snap=await getDoc(ref);
-    if(!snap.exists()){toast('Participant introuvable');return;}
     const update={total:val,updatedAt:Date.now()};
-    if(val>=GOAL&&!snap.data().finishTime) update.finishTime=1;
+    if(timeMs>0) update.finishTime=timeMs;
+    else if(val<GOAL) update.finishTime=null;
     await updateDoc(ref,update);
-    toast('Score mis à jour ✓');
-  } catch(e){
-    toast('Erreur : '+e.message);
-  }
+    toast('Mis à jour ✓');
+  }catch(e){toast('Erreur: '+e.message);}
+}
+
+window.adminAdd=async function(){
+  const nameInput=document.getElementById('admin-add-name');
+  const name=nameInput.value.trim();
+  if(!name){nameInput.focus();return;}
+  try{
+    await setDoc(doc(db,'challengers',name),{
+      name,displayName:name,total:0,teamType:'solo',partner:'',updatedAt:Date.now()
+    });
+    nameInput.value='';
+    toast(name+' ajouté ✓');
+    buildAdminList();
+  }catch(e){toast('Erreur: '+e.message);}
+};
+
+async function adminDelete(name){
+  if(!confirm('Supprimer '+name+' ?')) return;
+  try{
+    await deleteDoc(doc(db,'challengers',name));
+    toast(name+' supprimé');
+    buildAdminList();
+  }catch(e){toast('Erreur: '+e.message);}
 }
 
 window.closeAdminModal=function(e){
@@ -592,13 +758,10 @@ window.closeAdminModal=function(e){
     document.getElementById('admin-overlay').classList.remove('open');
 };
 
-// ── CELEBRATION ──
-function celebrate(name,finishTime,isRemote){
-  if(isRemote&&document.getElementById('celebration').classList.contains('show')) return;
-  document.getElementById('celeb-name').textContent=(!isRemote&&name.includes(pseudo))?'Bravo '+name+' !':name+' a terminé !';
+// ── CELEBRATION (only for self) ──
+function celebrate(name,finishTime){
+  document.getElementById('celeb-name').textContent='Bravo '+name+' !';
   document.getElementById('celeb-time').textContent=finishTime?fmtTime(finishTime):'';
-  // Show/hide insta button only for self
-  document.getElementById('insta-btn').style.display=isRemote?'none':'flex';
   document.getElementById('celebration').classList.add('show');
   launchConfetti();
 }
@@ -615,92 +778,65 @@ function launchConfetti(){
   }
 }
 
-// ── INSTAGRAM SHARE CARD ──
-window.generateShareCard=function(){
+// ── SHARE CARD ──
+function drawShareCard(name,finishTime){
   const canvas=document.getElementById('share-canvas');
   const ctx=canvas.getContext('2d');
   const W=1080,H=1080;
-
-  // Background
-  ctx.fillStyle='#09090f';
-  ctx.fillRect(0,0,W,H);
-
-  // Gradient top bar
+  ctx.fillStyle='#09090f';ctx.fillRect(0,0,W,H);
   const bar=ctx.createLinearGradient(0,0,W,0);
-  bar.addColorStop(0,'#7c6fff');
-  bar.addColorStop(1,'#ff6fd8');
-  ctx.fillStyle=bar;
-  ctx.fillRect(0,0,W,8);
-
-  // Subtle glow circle
+  bar.addColorStop(0,'#7c6fff');bar.addColorStop(1,'#ff6fd8');
+  ctx.fillStyle=bar;ctx.fillRect(0,0,W,8);
   const glow=ctx.createRadialGradient(W/2,300,0,W/2,300,500);
-  glow.addColorStop(0,'rgba(124,111,255,0.15)');
-  glow.addColorStop(1,'rgba(124,111,255,0)');
-  ctx.fillStyle=glow;
-  ctx.fillRect(0,0,W,H);
-
-  // Event info
-  ctx.fillStyle='rgba(160,140,255,0.5)';
-  ctx.font='500 28px -apple-system,sans-serif';
-  ctx.textAlign='center';
+  glow.addColorStop(0,'rgba(124,111,255,0.15)');glow.addColorStop(1,'rgba(124,111,255,0)');
+  ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
+  ctx.fillStyle='rgba(160,140,255,0.5)';ctx.font='500 28px sans-serif';ctx.textAlign='center';
   ctx.fillText('CrossFit Le Trapèze · 27 mars 2025',W/2,120);
-
-  // Big emoji area
-  ctx.font='120px serif';
-  ctx.textAlign='center';
-  ctx.fillText('🏆',W/2,290);
-
-  // Name
+  ctx.font='120px serif';ctx.fillText('🏆',W/2,290);
   const grad=ctx.createLinearGradient(200,0,880,0);
-  grad.addColorStop(0,'#7c6fff');
-  grad.addColorStop(1,'#ff6fd8');
-  ctx.fillStyle=grad;
-  ctx.font='700 80px -apple-system,sans-serif';
-  ctx.textAlign='center';
-  const displayN=celebName||(pseudo+(partner?' & '+partner:''));
-  // Truncate if too long
-  let nameText=displayN;
-  ctx.font='700 72px -apple-system,sans-serif';
+  grad.addColorStop(0,'#7c6fff');grad.addColorStop(1,'#ff6fd8');
+  ctx.fillStyle=grad;ctx.font='700 72px sans-serif';ctx.textAlign='center';
+  let nameText=name;
   while(ctx.measureText(nameText).width>900&&nameText.length>3) nameText=nameText.slice(0,-1)+'…';
   ctx.fillText(nameText,W/2,420);
-
-  // "a terminé"
-  ctx.fillStyle='rgba(240,238,255,0.7)';
-  ctx.font='400 36px -apple-system,sans-serif';
+  ctx.fillStyle='rgba(240,238,255,0.7)';ctx.font='400 36px sans-serif';
   ctx.fillText('a relevé le challenge',W/2,490);
-
-  // 1000 Burpees big
-  ctx.fillStyle=grad;
-  ctx.font='700 140px -apple-system,sans-serif';
-  ctx.fillText('1000',W/2,660);
-  ctx.fillStyle='rgba(240,238,255,0.9)';
-  ctx.font='500 52px -apple-system,sans-serif';
-  ctx.fillText('BURPEES ✅',W/2,730);
-
-  // Time
-  if(celebTime){
-    ctx.fillStyle='#ff6fd8';
-    ctx.font='700 56px -apple-system,sans-serif';
-    ctx.fillText(fmtTime(celebTime),W/2,830);
-    ctx.fillStyle='rgba(160,140,255,0.6)';
-    ctx.font='400 28px -apple-system,sans-serif';
-    ctx.fillText('temps total',W/2,876);
+  ctx.fillStyle=grad;ctx.font='700 140px sans-serif';ctx.fillText('1000',W/2,660);
+  ctx.fillStyle='rgba(240,238,255,0.9)';ctx.font='500 52px sans-serif';ctx.fillText('BURPEES ✅',W/2,730);
+  if(finishTime){
+    ctx.fillStyle='#ff6fd8';ctx.font='700 56px sans-serif';ctx.fillText(fmtTime(finishTime),W/2,830);
+    ctx.fillStyle='rgba(160,140,255,0.6)';ctx.font='400 28px sans-serif';ctx.fillText('temps total',W/2,876);
   }
+  ctx.fillStyle='rgba(160,140,255,0.4)';ctx.font='400 26px sans-serif';
+  ctx.fillText('#1000BurpeesChallenge #CrossFitLeTrapeze',W/2,980);
+}
 
-  // Bottom branding
-  ctx.fillStyle='rgba(160,140,255,0.4)';
-  ctx.font='400 26px -apple-system,sans-serif';
-  ctx.fillText('#1000BurpeesChallenge #CrossFitLeTrapèze',W/2,980);
-
-  // Download
+window.generateShareCard=function(){
+  const ft=celebFinishTime||0;
+  const name=celebName||(pseudo+(partner?' & '+partner:''));
+  drawShareCard(name,ft);
   const link=document.createElement('a');
   link.download='1000-burpees-done.png';
-  link.href=canvas.toDataURL('image/png');
+  link.href=document.getElementById('share-canvas').toDataURL('image/png');
   link.click();
   toast('Image téléchargée ! Poste-la sur Instagram 📸');
 };
 
-// ── INIT ──
+// Called from recap modal (for current user's own card)
+window.generateShareCardFor=function(){
+  if(!recapPlayer) return;
+  const snap=allPlayers.find(p=>p.name===pseudo);
+  const ft=snap?.finishTime||0;
+  const name=snap?.displayName||pseudo;
+  celebFinishTime=ft;celebName=name;
+  drawShareCard(name,ft);
+  const link=document.createElement('a');
+  link.download='1000-burpees-done.png';
+  link.href=document.getElementById('share-canvas').toDataURL('image/png');
+  link.click();
+  toast('Image téléchargée ! 📸');
+};
+
 showScreen('setup');
 </script>
 </body>
