@@ -43,7 +43,8 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 
 /* ══ APP ══ */
 #screen-app{padding-bottom:5rem;}
-.app-header{display:flex;align-items:center;justify-content:space-between;padding:1.25rem 1.25rem 0;margin-bottom:1.5rem;}
+.app-inner{max-width:1100px;margin:0 auto;padding:0;}
+.app-header{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 1.5rem 0;margin-bottom:1.5rem;}
 .app-logo{font-size:13px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .header-right{display:flex;align-items:center;gap:8px;}
 .session-pill{display:flex;align-items:center;gap:6px;background:var(--bg2);border:0.5px solid var(--border2);border-radius:99px;padding:5px 12px;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;}
@@ -51,6 +52,22 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.2}}
 .tv-btn{padding:5px 12px;font-size:12px;background:var(--bg2);border:0.5px solid var(--border2);border-radius:99px;color:var(--muted);cursor:pointer;transition:all 0.15s;}
 .tv-btn:hover{border-color:var(--g1);color:var(--text);}
+
+/* DESKTOP 2-COL LAYOUT */
+.app-body{display:flex;flex-direction:column;padding:0 1.25rem;}
+@media(min-width:860px){
+  #screen-app{padding-bottom:3rem;}
+  .app-header{padding:2rem 2.5rem 0;}
+  .app-body{flex-direction:row;align-items:flex-start;gap:2rem;padding:0 2.5rem;max-width:1100px;margin:0 auto;}
+  .app-col-left{flex:0 0 360px;position:sticky;top:2rem;}
+  .app-col-right{flex:1;min-width:0;}
+  .my-section{padding:0 0 1rem;}
+  .btns{padding:0;}
+  .toast{padding:0;}
+  .filter-row{padding:0;}
+  .divider{margin:1.25rem 0 0;}
+  .lb-section{padding:1.25rem 0 0;}
+}
 
 /* MY CARD */
 .my-section{padding:0 1.25rem 1rem;}
@@ -100,6 +117,7 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .lb-team-tag{font-size:11px;color:var(--muted);margin-top:1px;}
 .lb-right{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0;}
 .lb-time{font-size:11px;color:var(--g2);font-variant-numeric:tabular-nums;font-weight:600;}
+.lb-time-live{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;font-weight:500;font-feature-settings:"tnum";}
 .lb-time-pending{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;}
 .lb-minibar{width:56px;height:3px;background:var(--bg3);border-radius:99px;overflow:hidden;}
 .lb-minifill{height:100%;background:var(--bg4);border-radius:99px;transition:width 0.5s cubic-bezier(.4,0,.2,1);}
@@ -164,6 +182,7 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 
 /* ══ TV SCREEN ══ */
 #screen-tv{min-height:100vh;background:var(--bg);padding:2rem;display:none;flex-direction:column;}
+.tv-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;flex-direction:column;flex:1;}
 .tv-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;}
 .tv-logo{font-size:28px;font-weight:700;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .tv-event{font-size:16px;color:var(--muted);}
@@ -177,16 +196,16 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 .tv-rank.silver{color:#c0c0c0;}
 .tv-rank.bronze{color:#cd7f32;}
 .tv-rank.other{color:var(--muted);}
-.tv-info{flex:1;min-width:0;}
+.tv-info{flex:0 0 220px;min-width:0;}
 .tv-name{font-size:22px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
 .tv-type{font-size:13px;color:var(--muted);margin-top:2px;}
-.tv-bar-wrap{flex:2;display:flex;flex-direction:column;gap:5px;}
+.tv-bar-wrap{flex:1;display:flex;flex-direction:column;gap:5px;}
 .tv-bar-track{height:8px;background:var(--bg3);border-radius:99px;overflow:hidden;}
 .tv-bar-fill{height:100%;border-radius:99px;transition:width 0.8s cubic-bezier(.4,0,.2,1);}
 .tv-bar-fill.in-progress{background:var(--g1);}
 .tv-bar-fill.done{background:var(--grad);}
 .tv-bar-labels{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);}
-.tv-score-col{text-align:right;flex-shrink:0;min-width:120px;}
+.tv-score-col{text-align:right;flex-shrink:0;min-width:130px;}
 .tv-score{font-size:24px;font-weight:700;font-variant-numeric:tabular-nums;}
 .tv-score.done{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 .tv-time{font-size:14px;color:var(--g2);font-weight:600;margin-top:2px;font-variant-numeric:tabular-nums;}
@@ -236,46 +255,54 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 <!-- ══ APP ══ -->
 <div id="screen-app" class="screen">
   <div class="app-header">
-    <span class="app-logo">1000 Burpees</span>
+    <span class="app-logo">1000 Burpees Challenge</span>
     <div class="header-right">
       <button class="tv-btn" onclick="showTV()">📺 Vue TV</button>
       <div class="session-pill"><div class="pulse-dot"></div><span id="timer">00:00</span></div>
     </div>
   </div>
-  <div class="my-section">
-    <div class="my-card">
-      <div class="my-name-row">
-        <span class="my-name" id="my-name">—</span>
-        <span class="team-badge" id="my-badge">Solo</span>
+  <div class="app-body">
+    <!-- LEFT: my card + buttons -->
+    <div class="app-col-left">
+      <div class="my-section">
+        <div class="my-card">
+          <div class="my-name-row">
+            <span class="my-name" id="my-name">—</span>
+            <span class="team-badge" id="my-badge">Solo</span>
+          </div>
+          <div class="my-count" id="my-count">0</div>
+          <p class="my-sub">/ 1 000 burpees</p>
+          <div class="progress-track"><div class="progress-fill" id="my-bar" style="width:0%"></div></div>
+          <div class="progress-row"><span id="my-pct">0 %</span><span>1 000</span></div>
+          <button class="insta-done-btn" id="my-insta-btn" onclick="generateShareCard()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            Télécharger ma carte Instagram
+          </button>
+        </div>
       </div>
-      <div class="my-count" id="my-count">0</div>
-      <p class="my-sub">/ 1 000 burpees</p>
-      <div class="progress-track"><div class="progress-fill" id="my-bar" style="width:0%"></div></div>
-      <div class="progress-row"><span id="my-pct">0 %</span><span>1 000</span></div>
-      <button class="insta-done-btn" id="my-insta-btn" onclick="generateShareCard()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-        Télécharger ma carte Instagram
-      </button>
+      <div class="btns" style="margin-top:1rem;">
+        <button class="btn btn-main" onclick="add(1)">+ 1 burpee</button>
+        <button class="btn" onclick="add(5)">+ 5</button>
+        <button class="btn" onclick="add(10)">+ 10</button>
+        <button class="btn" onclick="add(25)">+ 25</button>
+        <button class="btn" onclick="add(50)">+ 50</button>
+        <button class="btn btn-sm" onclick="undo()">annuler</button>
+      </div>
+      <p class="toast" id="toast"></p>
     </div>
-  </div>
-  <div class="btns" style="margin-top:1rem;">
-    <button class="btn btn-main" onclick="add(1)">+ 1 burpee</button>
-    <button class="btn" onclick="add(5)">+ 5</button>
-    <button class="btn" onclick="add(10)">+ 10</button>
-    <button class="btn" onclick="add(25)">+ 25</button>
-    <button class="btn" onclick="add(50)">+ 50</button>
-    <button class="btn btn-sm" onclick="undo()">annuler</button>
-  </div>
-  <p class="toast" id="toast"></p>
-  <div class="filter-row">
-    <button class="filter-tab active" onclick="setFilter('all',this)">Tous</button>
-    <button class="filter-tab" onclick="setFilter('solo',this)">Solo</button>
-    <button class="filter-tab" onclick="setFilter('duo',this)">Duo</button>
-  </div>
-  <hr class="divider" style="margin-top:1.25rem;"/>
-  <div class="lb-section">
-    <div class="lb-header">Classement <span class="live-badge">live</span></div>
-    <div class="lb-list" id="lb-list"><p style="font-size:13px;color:var(--muted);text-align:center;padding:1.5rem 0">Chargement...</p></div>
+    <!-- RIGHT: leaderboard -->
+    <div class="app-col-right">
+      <div class="filter-row">
+        <button class="filter-tab active" onclick="setFilter('all',this)">Tous</button>
+        <button class="filter-tab" onclick="setFilter('solo',this)">Solo</button>
+        <button class="filter-tab" onclick="setFilter('duo',this)">Duo</button>
+      </div>
+      <hr class="divider" style="margin-top:1.25rem;"/>
+      <div class="lb-section">
+        <div class="lb-header">Classement <span class="live-badge">live</span></div>
+        <div class="lb-list" id="lb-list"><p style="font-size:13px;color:var(--muted);text-align:center;padding:1.5rem 0">Chargement...</p></div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -292,14 +319,16 @@ html,body{min-height:100%;background:var(--bg);color:var(--text);font-family:-ap
 
 <!-- ══ TV ══ -->
 <div id="screen-tv" class="screen">
-  <div class="tv-header">
-    <div>
-      <div class="tv-logo">1000 Burpees Challenge</div>
-      <div class="tv-event">CrossFit Le Trapèze · 27 mars 2025</div>
+  <div class="tv-inner">
+    <div class="tv-header">
+      <div>
+        <div class="tv-logo">1000 Burpees Challenge</div>
+        <div class="tv-event">CrossFit Le Trapèze · 27 mars 2025</div>
+      </div>
+      <button class="tv-close" onclick="hideTV()">← Retour</button>
     </div>
-    <button class="tv-close" onclick="hideTV()">← Retour</button>
+    <div class="tv-list" id="tv-list"></div>
   </div>
-  <div class="tv-list" id="tv-list"></div>
 </div>
 
 <!-- ══ RECAP MODAL ══ -->
@@ -444,16 +473,25 @@ window.startApp=async function(){
     celebratedLocal=total>=GOAL;
   }
   history=JSON.parse(localStorage.getItem('burpees_h_'+pseudo)||'[]');
-  sessionStart=Date.now();
 
+  // Use existing startedAt if returning, else record now
+  const existingStart=localStorage.getItem('burpees_start_'+pseudo);
+  sessionStart=existingStart?parseInt(existingStart):Date.now();
+  localStorage.setItem('burpees_start_'+pseudo,sessionStart);
+
+  // Save startedAt to Firestore so others can see elapsed time
   const displayName=teamType==='duo'&&partner?pseudo+' & '+partner:pseudo;
+  await setDoc(doc(db,'challengers',pseudo),{
+    name:pseudo,displayName,total,teamType,partner:partner||'',
+    startedAt:sessionStart,updatedAt:Date.now()
+  },{merge:true});
+
   document.getElementById('my-name').textContent=displayName;
   document.getElementById('my-badge').textContent=teamType==='duo'?'Duo':'Solo';
 
   showScreen('app');
   startTimer();
   render();
-  // Show insta btn if already done
   if(total>=GOAL){
     const btn=document.getElementById('my-insta-btn');
     btn.style.display='flex';
@@ -499,7 +537,7 @@ function render(){
 // ── SAVE ──
 async function save(finishTime){
   const displayName=teamType==='duo'&&partner?pseudo+' & '+partner:pseudo;
-  const data={name:pseudo,displayName,total,teamType,partner:partner||'',updatedAt:Date.now()};
+  const data={name:pseudo,displayName,total,teamType,partner:partner||'',startedAt:sessionStart,updatedAt:Date.now()};
   if(finishTime){
     data.finishTime=finishTime;
   } else {
@@ -590,6 +628,33 @@ function startListening(){
   });
 }
 
+// ── LIVE ELAPSED TICKER ──
+let tickerInterval=null;
+function startTicker(){
+  if(tickerInterval) return;
+  tickerInterval=setInterval(()=>{
+    const now=Date.now();
+    document.querySelectorAll('.lb-elapsed').forEach(el=>{
+      const start=parseInt(el.getAttribute('data-start'));
+      if(!start) return;
+      el.textContent=fmtElapsed(now-start);
+    });
+    document.querySelectorAll('.tv-elapsed').forEach(el=>{
+      const start=parseInt(el.getAttribute('data-start'));
+      if(!start) return;
+      el.textContent=fmtElapsed(now-start);
+    });
+  },1000);
+}
+
+function fmtElapsed(ms){
+  if(ms<=0) return '00:00';
+  const s=Math.floor(ms/1000);
+  const h=Math.floor(s/3600),m=Math.floor((s%3600)/60),sec=s%60;
+  if(h>0) return h+'h'+String(m).padStart(2,'0')+'m'+String(sec).padStart(2,'0')+'s';
+  return String(m).padStart(2,'0')+'m'+String(sec).padStart(2,'0')+'s';
+}
+
 // ── RENDER LB ──
 function renderLB(players){
   const filtered=filterMode==='all'?players:players.filter(p=>p.teamType===filterMode);
@@ -606,9 +671,15 @@ function renderLB(players){
     const barW=Math.round((p.total/maxScore)*100);
     const rankClass=i===0?'gold':i===1?'silver':i===2?'bronze':'';
     const displayName=p.displayName||p.name;
-    const timeHtml=done
-      ?`<span class="lb-time">${fmtTime(p.finishTime)}</span>`
-      :`<span class="lb-time-pending">${p.total} / ${GOAL}</span>`;
+    let timeHtml;
+    if(done){
+      timeHtml=`<span class="lb-time">${fmtTime(p.finishTime)}</span>`;
+    } else if(p.startedAt){
+      const elapsed=fmtElapsed(Date.now()-p.startedAt);
+      timeHtml=`<span class="lb-elapsed lb-time-live" data-start="${p.startedAt}">${elapsed}</span>`;
+    } else {
+      timeHtml=`<span class="lb-time-pending">${p.total} / ${GOAL}</span>`;
+    }
     const row=document.createElement('div');
     row.className='lb-row'+(isMe?' me':'')+(done?' done-row':'');
     row.onclick=()=>openRecap(p,i+1);
@@ -619,6 +690,7 @@ function renderLB(players){
       `<div class="lb-right">${timeHtml}<div class="lb-minibar"><div class="lb-minifill" style="width:${barW}%"></div></div></div>`;
     list.appendChild(row);
   });
+  startTicker();
 }
 
 // ── RENDER TV ──
@@ -635,6 +707,15 @@ function renderTV(players){
     const pct=Math.round((p.total/GOAL)*100);
     const rankClass=i===0?'gold':i===1?'silver':i===2?'bronze':'other';
     const displayName=p.displayName||p.name;
+    let timeHtml;
+    if(done&&p.finishTime){
+      timeHtml=`<div class="tv-time">${fmtTime(p.finishTime)}</div>`;
+    } else if(!done&&p.startedAt){
+      const elapsed=fmtElapsed(Date.now()-p.startedAt);
+      timeHtml=`<div class="tv-time tv-elapsed" data-start="${p.startedAt}" style="color:var(--muted)">${elapsed}</div>`;
+    } else {
+      timeHtml='';
+    }
     const row=document.createElement('div');
     row.className='tv-row'+(done?' done-row':'');
     row.innerHTML=
@@ -646,10 +727,11 @@ function renderTV(players){
       `</div>`+
       `<div class="tv-score-col">`+
         `<div class="tv-score ${done?'done':''}">${done?'✓ 1000':p.total}</div>`+
-        `${done&&p.finishTime?`<div class="tv-time">${fmtTime(p.finishTime)}</div>`:''}` +
+        timeHtml+
       `</div>`;
     list.appendChild(row);
   });
+  startTicker();
 }
 
 // ── RECAP MODAL ──
