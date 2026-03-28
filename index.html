@@ -433,12 +433,13 @@ function parseTime(str){
 }
 
 window.showScreen=function(id){
+  const displayMap={setup:'flex',app:'block',admin:'flex',tv:'flex'};
   ['setup','app','admin','tv'].forEach(s=>{
     const el=document.getElementById('screen-'+s);
     if(!el) return;
     if(s===id){
       el.style.width='100%';
-      el.style.display=(s==='admin'||s==='tv')?'flex':'block';
+      el.style.display=displayMap[s];
     } else {
       el.style.display='none';
     }
