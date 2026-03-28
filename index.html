@@ -280,16 +280,16 @@ html,body{min-height:100%;width:100%;display:flex;flex-direction:column;backgrou
     <p>Rejoins le classement live et donne tout !</p>
     <p class="field-label">Challenge</p>
     <div id="challenge-select-wrap"></div>
-    <p class="field-label">Ton prénom / pseudo</p>
+    <p class="field-label" id="label-pseudo">Ton prénom / pseudo</p>
     <input type="text" id="pseudo-input" class="setup-input" placeholder="Prénom ou pseudo" maxlength="20" autocomplete="off" spellcheck="false"/>
+    <div id="partner-field" style="display:none">
+      <p class="field-label">Prénom / pseudo du partenaire</p>
+      <input type="text" id="partner-input" class="setup-input" placeholder="Partenaire" maxlength="20" autocomplete="off" spellcheck="false"/>
+    </div>
     <p class="field-label">Type d'équipe</p>
     <div class="team-type-row">
       <div class="team-type-btn active" id="tt-solo" onclick="setTeamType('solo')"><div class="tt-label">🧍</div>Solo</div>
       <div class="team-type-btn" id="tt-duo" onclick="setTeamType('duo')"><div class="tt-label">👥</div>Duo</div>
-    </div>
-    <div id="partner-field" style="display:none">
-      <p class="field-label">Prénom / pseudo du partenaire</p>
-      <input type="text" id="partner-input" class="setup-input" placeholder="Partenaire" maxlength="20" autocomplete="off" spellcheck="false"/>
     </div>
     <button class="btn-join" id="btn-join" onclick="startApp()">Rejoindre le challenge 💪</button>
     <p class="admin-link" onclick="showAdminLogin()">Accès admin</p>
@@ -413,7 +413,11 @@ html,body{min-height:100%;width:100%;display:flex;flex-direction:column;backgrou
     <!-- PARTICIPANTS TAB -->
     <div class="admin-panel active" id="admin-panel-participants">
       <div class="admin-add-row">
-        <input type="text" id="admin-add-name" placeholder="Nouveau participant" maxlength="30"/>
+        <input type="text" id="admin-add-name" placeholder="Nom / pseudo" maxlength="30"/>
+        <select id="admin-add-type" style="flex:0 0 80px;padding:10px 8px;font-size:13px;background:var(--bg3);border:0.5px solid var(--border2);border-radius:8px;color:var(--text);outline:none;">
+          <option value="solo">Solo</option>
+          <option value="duo">Duo</option>
+        </select>
         <button class="admin-add-btn" onclick="adminAdd()">+ Ajouter</button>
       </div>
       <div id="admin-list"></div>
@@ -616,6 +620,8 @@ window.setTeamType=function(t){
   document.getElementById('tt-solo').classList.toggle('active',t==='solo');
   document.getElementById('tt-duo').classList.toggle('active',t==='duo');
   document.getElementById('partner-field').style.display=t==='duo'?'block':'none';
+  document.getElementById('label-pseudo').textContent=t==='duo'?'Participant 1':'Ton prénom / pseudo';
+  document.getElementById('pseudo-input').placeholder=t==='duo'?'Participant 1':'Prénom ou pseudo';
 };
 
 const savedPseudo=localStorage.getItem('burpees_pseudo');
@@ -844,11 +850,10 @@ function renderLB(players){
 
 // ── RENDER TV ──
 function renderTV(players){
-  const tvEl=document.getElementById('screen-tv');
-  if(!tvEl||tvEl.style.display==='none') return;
   const sorted=sortPlayers([...players]);
   const maxScore=Math.max(...sorted.map(p=>p.total),1);
   const list=document.getElementById('tv-list');
+  if(!list) return;
   list.innerHTML='';
   sorted.forEach((p,i)=>{
     const done=p.total>=GOAL;
@@ -873,7 +878,7 @@ function renderTV(players){
   startTicker();
 }
 
-window.showTV=function(){showScreen('tv');renderTV(allPlayers);};
+window.showTV=function(){showScreen('tv');renderTV(allPlayers);startTicker();};
 window.hideTV=function(){showScreen('app');};
 
 // ── RECAP ──
@@ -973,14 +978,16 @@ async function adminSave(name,scoreInp,timeInp,btn){
 
 window.adminAdd=async function(){
   const nameInput=document.getElementById('admin-add-name');
+  const typeSelect=document.getElementById('admin-add-type');
   const name=nameInput.value.trim();
+  const selectedType=typeSelect?typeSelect.value:'solo';
   if(!name||!currentChallengeId){nameInput.focus();return;}
   try{
     await setDoc(doc(db,'challenges',currentChallengeId,'participants',name),{
-      name,displayName:name,total:0,teamType:'solo',partner:'',updatedAt:Date.now()
+      name,displayName:name,total:0,teamType:selectedType,partner:'',updatedAt:Date.now()
     });
     nameInput.value='';
-    toast(name+' ajouté ✓');
+    toast(name+' ajouté ('+selectedType+') ✓');
     buildAdminList();
   }catch(e){toast('Erreur: '+e.message);}
 };
