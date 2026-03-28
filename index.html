@@ -305,6 +305,7 @@ html,body{min-height:100%;width:100%;display:flex;flex-direction:column;backgrou
     </div>
     <div class="header-right">
       <button class="tv-btn" onclick="showTV()">📺 Vue TV</button>
+      <button class="tv-btn" onclick="showAdminLogin()">⚙️ Admin</button>
       <div class="session-pill"><div class="pulse-dot"></div><span id="timer">00:00</span></div>
     </div>
   </div>
@@ -539,10 +540,12 @@ async function init(){
       if(snap.exists()){
         total=snap.data().total||0;
         celebratedLocal=total>=GOAL;
+        // Always restore the official start time from Firestore (joinedAt), never from localStorage
+        sessionStart=snap.data().joinedAt||snap.data().startedAt||Date.now();
+      } else {
+        sessionStart=Date.now();
       }
       history=JSON.parse(localStorage.getItem('burpees_h_'+pseudo)||'[]');
-      const existingStart=localStorage.getItem('burpees_start_'+pseudo);
-      sessionStart=existingStart?parseInt(existingStart):Date.now();
 
       const displayName=teamType==='duo'&&partner?pseudo+' & '+partner:pseudo;
       document.getElementById('my-name').textContent=displayName;
@@ -636,16 +639,29 @@ window.startApp=async function(){
   localStorage.setItem('burpees_partner',partner);
 
   const snap=await getDoc(doc(db,'challenges',currentChallengeId,'participants',pseudo));
-  if(snap.exists()){total=snap.data().total||0;celebratedLocal=total>=GOAL;}
+  if(snap.exists()){
+    total=snap.data().total||0;
+    celebratedLocal=total>=GOAL;
+    if(snap.data().joinedAt) sessionStart=snap.data().joinedAt;
+  }
   history=JSON.parse(localStorage.getItem('burpees_h_'+pseudo)||'[]');
 
-  const existingStart=localStorage.getItem('burpees_start_'+pseudo);
-  sessionStart=existingStart?parseInt(existingStart):Date.now();
-  localStorage.setItem('burpees_start_'+pseudo,sessionStart);
+  // joinedAt = official start time, set ONCE on first join, never overwritten
+  if(!sessionStart) sessionStart=Date.now();
 
   const displayName=teamType==='duo'&&partner?pseudo+' & '+partner:pseudo;
+
+  // Check if already has a joinedAt (returning user) — never overwrite it
+  const existingSnap=await getDoc(doc(db,'challenges',currentChallengeId,'participants',pseudo));
+  const joinedAt=existingSnap.exists()&&existingSnap.data().joinedAt
+    ? existingSnap.data().joinedAt
+    : sessionStart;
+  sessionStart=joinedAt; // official start time is always joinedAt
+  localStorage.setItem('burpees_start_'+pseudo,sessionStart);
+
   await setDoc(doc(db,'challenges',currentChallengeId,'participants',pseudo),{
-    name:pseudo,displayName,total,teamType,partner:partner||'',startedAt:sessionStart,updatedAt:Date.now()
+    name:pseudo,displayName,total,teamType,partner:partner||'',
+    startedAt:joinedAt,joinedAt,updatedAt:Date.now()
   },{merge:true});
 
   document.getElementById('my-name').textContent=displayName;
@@ -666,7 +682,7 @@ window.checkAdmin=function(){
   const pw=document.getElementById('admin-pw-input').value;
   if(pw===ADMIN_PASSWORD){
     document.getElementById('admin-pw-input').value='';
-    if(pseudo) showScreen('app'); else showScreen('setup');
+    showScreen(pseudo?'app':'setup');
     if(!lbUnsubscribe&&currentChallengeId) startListening();
     setTimeout(openAdminModal,300);
   } else {
