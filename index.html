@@ -8,31 +8,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #ffffff;
-      --bg-secondary: #f5f5f3;
-      --text: #1a1a18;
-      --text-secondary: #888780;
-      --border: rgba(0,0,0,0.12);
-      --border-hover: rgba(0,0,0,0.25);
-      --danger-text: #a32d2d;
-      --danger-border: rgba(163,45,45,0.3);
-      --danger-bg: #fcebeb;
-      --radius: 8px;
-      --radius-lg: 12px;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #1c1c1a;
-        --bg-secondary: #2a2a28;
-        --text: #f0ede8;
-        --text-secondary: #888780;
-        --border: rgba(255,255,255,0.12);
-        --border-hover: rgba(255,255,255,0.25);
-        --danger-text: #f09595;
-        --danger-border: rgba(240,149,149,0.3);
-        --danger-bg: rgba(163,45,45,0.15);
-      }
+      --bg: #0d0d0d;
+      --bg2: #161616;
+      --bg3: #1f1f1f;
+      --text: #f0ede8;
+      --muted: #666;
+      --accent: #e8ff47;
+      --accent-dim: rgba(232,255,71,0.10);
+      --border: rgba(255,255,255,0.08);
+      --border2: rgba(255,255,255,0.14);
+      --radius: 10px;
+      --radius-lg: 16px;
     }
 
     html, body {
@@ -43,204 +29,362 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    .wrap {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 3rem 1.5rem 4rem;
+    /* SETUP */
+    #setup {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
     }
-
-    .label {
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-bottom: 0.5rem;
+    .setup-card {
+      background: var(--bg2);
+      border: 0.5px solid var(--border2);
+      border-radius: var(--radius-lg);
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 360px;
+      text-align: center;
     }
-
-    .big-count {
-      font-size: 80px;
-      font-weight: 500;
-      line-height: 1;
+    .setup-emoji { font-size: 36px; margin-bottom: 1rem; }
+    .setup-card h1 { font-size: 22px; font-weight: 500; margin-bottom: 6px; }
+    .setup-card p { font-size: 14px; color: var(--muted); margin-bottom: 2rem; }
+    .setup-card input {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 16px;
+      background: var(--bg3);
+      border: 0.5px solid var(--border2);
+      border-radius: var(--radius);
       color: var(--text);
+      outline: none;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+    .setup-card input:focus { border-color: var(--accent); }
+    .btn-start {
+      width: 100%;
+      padding: 15px;
+      font-size: 15px;
+      font-weight: 700;
+      background: var(--accent);
+      color: #0d0d0d;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: opacity 0.15s, transform 0.1s;
+    }
+    .btn-start:hover { opacity: 0.88; }
+    .btn-start:active { transform: scale(0.98); }
+
+    /* APP */
+    #app { display: none; padding-bottom: 4rem; }
+
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.25rem 1.5rem;
+    }
+    .header-title { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .session-timer {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--muted);
       font-variant-numeric: tabular-nums;
     }
-
-    .total {
-      font-size: 14px;
-      color: var(--text-secondary);
-      margin-top: 6px;
+    .timer-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      animation: blink 1.5s ease-in-out infinite;
     }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
 
-    .progress-section {
-      margin: 2rem 0 0.5rem;
+    /* MY CARD */
+    .my-section { padding: 0 1.25rem 0; }
+    .my-card {
+      background: var(--bg2);
+      border: 0.5px solid var(--border2);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem 1.5rem 1.25rem;
     }
-
-    .progress-track {
-      height: 5px;
-      background: var(--bg-secondary);
-      border-radius: 99px;
-      overflow: hidden;
+    .my-name { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+    .my-count {
+      font-size: 68px;
+      font-weight: 500;
+      line-height: 1;
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
     }
+    .my-total { font-size: 13px; color: var(--muted); margin-top: 4px; margin-bottom: 1.25rem; }
+    .progress-track { height: 4px; background: var(--bg3); border-radius: 99px; overflow: hidden; margin-bottom: 5px; }
+    .progress-fill { height: 100%; background: var(--accent); border-radius: 99px; transition: width 0.4s cubic-bezier(.4,0,.2,1); }
+    .progress-pct { font-size: 11px; color: var(--muted); text-align: right; }
 
-    .progress-fill {
-      height: 100%;
-      background: var(--text);
-      border-radius: 99px;
-      transition: width 0.4s cubic-bezier(.4,0,.2,1);
-    }
-
-    .pct {
-      font-size: 12px;
-      color: var(--text-secondary);
-      text-align: right;
-      margin-top: 6px;
-    }
-
-    .btns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 2rem;
-    }
-
+    /* BUTTONS */
+    .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 1rem 1.25rem 0; }
     .btn {
       padding: 14px;
       font-size: 15px;
       font-weight: 500;
-      border: 0.5px solid var(--border);
-      background: var(--bg);
+      background: var(--bg2);
       color: var(--text);
+      border: 0.5px solid var(--border2);
       border-radius: var(--radius);
       cursor: pointer;
-      transition: background 0.15s, border-color 0.15s, transform 0.1s;
+      transition: background 0.12s, transform 0.08s;
       -webkit-tap-highlight-color: transparent;
     }
-
-    .btn:hover { background: var(--bg-secondary); border-color: var(--border-hover); }
+    .btn:hover { background: var(--bg3); }
     .btn:active { transform: scale(0.97); }
-
     .btn-main {
       grid-column: 1 / -1;
-      font-size: 18px;
+      font-size: 18px; font-weight: 700;
       padding: 20px;
+      background: var(--accent-dim);
+      border-color: rgba(232,255,71,0.28);
+      color: var(--accent);
+      letter-spacing: 0.02em;
     }
-
-    .btn-danger {
-      grid-column: 1 / -1;
-      color: var(--danger-text);
-      border-color: var(--danger-border);
-    }
-
-    .btn-danger:hover { background: var(--danger-bg); }
-
-    .divider {
-      border: none;
-      border-top: 0.5px solid var(--border);
-      margin: 1.75rem 0;
-    }
+    .btn-main:hover { background: rgba(232,255,71,0.16); }
+    .btn-sm { font-size: 13px; color: var(--muted); border-color: var(--border); padding: 11px; }
 
     .toast {
       text-align: center;
       font-size: 13px;
-      color: var(--text-secondary);
+      color: var(--muted);
       height: 20px;
-      margin-top: 1rem;
+      margin-top: 10px;
+      padding: 0 1.25rem;
       opacity: 0;
       transition: opacity 0.3s;
     }
 
-    .done .big-count { opacity: 0.4; }
-    .done .progress-fill { background: #639922; }
+    /* LEADERBOARD */
+    .divider { border: none; border-top: 0.5px solid var(--border); margin: 1.5rem 1.25rem; }
+    .lb-section { padding: 0 1.25rem; }
+    .lb-header {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 1rem;
+    }
+    .live-badge {
+      font-size: 10px; padding: 2px 8px;
+      background: var(--accent-dim); color: var(--accent);
+      border-radius: 99px; letter-spacing: 0.05em;
+    }
+    .lb-list { display: flex; flex-direction: column; gap: 6px; }
+    .lb-row {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .lb-row.me { border-color: rgba(232,255,71,0.3); background: var(--accent-dim); }
+    .lb-rank { font-size: 12px; color: var(--muted); width: 20px; text-align: center; flex-shrink: 0; }
+    .lb-rank.gold { color: #ffd700; }
+    .lb-rank.silver { color: #c0c0c0; }
+    .lb-rank.bronze { color: #cd7f32; }
+    .lb-name { flex: 1; font-size: 14px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .lb-bar-wrap { width: 60px; height: 3px; background: var(--bg3); border-radius: 99px; overflow: hidden; flex-shrink: 0; }
+    .lb-bar { height: 100%; background: var(--muted); border-radius: 99px; transition: width 0.5s cubic-bezier(.4,0,.2,1); }
+    .lb-row.me .lb-bar { background: var(--accent); }
+    .lb-score { font-size: 14px; font-weight: 500; font-variant-numeric: tabular-nums; min-width: 38px; text-align: right; color: var(--muted); flex-shrink: 0; }
+    .lb-row.me .lb-score { color: var(--accent); }
+    .lb-check { font-size: 10px; color: var(--accent); margin-left: 3px; }
   </style>
 </head>
 <body>
-  <div class="wrap" id="app">
-    <p class="label">challenge</p>
-    <div class="big-count" id="count">0</div>
-    <p class="total">/ 1 000 burpees</p>
 
-    <div class="progress-section">
-      <div class="progress-track">
-        <div class="progress-fill" id="bar" style="width:0%"></div>
-      </div>
-      <p class="pct" id="pct">0 %</p>
+<div id="setup">
+  <div class="setup-card">
+    <div class="setup-emoji">💪</div>
+    <h1>1000 Burpees</h1>
+    <p>Choisis ton pseudo pour rejoindre le classement live</p>
+    <input type="text" id="pseudo-input" placeholder="Ton pseudo" maxlength="20" autocomplete="off" spellcheck="false" />
+    <button class="btn-start" onclick="startApp()">Rejoindre le challenge</button>
+  </div>
+</div>
+
+<div id="app">
+  <div class="header">
+    <span class="header-title">1000 Burpees Challenge</span>
+    <div class="session-timer">
+      <div class="timer-dot"></div>
+      <span id="timer">00:00</span>
     </div>
-
-    <div class="btns">
-      <button class="btn btn-main" onclick="add(1)">+ 1 burpee</button>
-      <button class="btn" onclick="add(5)">+ 5</button>
-      <button class="btn" onclick="add(10)">+ 10</button>
-      <button class="btn" onclick="add(25)">+ 25</button>
-      <button class="btn" onclick="add(50)">+ 50</button>
-      <button class="btn" onclick="undo()">annuler</button>
-    </div>
-
-    <hr class="divider" />
-
-    <div class="btns">
-      <button class="btn btn-danger" onclick="reset()">remettre à zéro</button>
-    </div>
-
-    <p class="toast" id="toast"></p>
   </div>
 
-  <script>
-    const KEY = 'burpees_v1';
-    let total = 0, history = [];
+  <div class="my-section">
+    <div class="my-card">
+      <p class="my-name" id="my-name">—</p>
+      <div class="my-count" id="my-count">0</div>
+      <p class="my-total">/ 1 000 burpees</p>
+      <div class="progress-track">
+        <div class="progress-fill" id="my-bar" style="width:0%"></div>
+      </div>
+      <p class="progress-pct" id="my-pct">0 %</p>
+    </div>
+  </div>
 
-    function load() {
-      try {
-        const d = JSON.parse(localStorage.getItem(KEY));
-        if (d) { total = d.total || 0; history = d.history || []; }
-      } catch(e) {}
-      render();
-    }
+  <div class="btns">
+    <button class="btn btn-main" onclick="add(1)">+ 1 burpee</button>
+    <button class="btn" onclick="add(5)">+ 5</button>
+    <button class="btn" onclick="add(10)">+ 10</button>
+    <button class="btn" onclick="add(25)">+ 25</button>
+    <button class="btn" onclick="add(50)">+ 50</button>
+    <button class="btn btn-sm" onclick="undo()">annuler</button>
+  </div>
+  <p class="toast" id="toast"></p>
 
-    function save() {
-      try { localStorage.setItem(KEY, JSON.stringify({ total, history })); } catch(e) {}
-    }
+  <hr class="divider" />
 
-    function render() {
-      const n = Math.min(total, 1000);
-      document.getElementById('count').textContent = total.toLocaleString('fr-FR');
-      const pct = Math.round(n / 10);
-      document.getElementById('bar').style.width = pct + '%';
-      document.getElementById('pct').textContent = pct + ' %';
-      document.getElementById('app').classList.toggle('done', total >= 1000);
-    }
+  <div class="lb-section">
+    <div class="lb-header">Classement <span class="live-badge">live</span></div>
+    <div class="lb-list" id="lb-list">
+      <p style="font-size:13px;color:var(--muted);text-align:center;padding:1.5rem 0">Chargement...</p>
+    </div>
+  </div>
+</div>
 
-    function toast(msg) {
-      const t = document.getElementById('toast');
-      t.textContent = msg;
-      t.style.opacity = 1;
-      clearTimeout(t._timer);
-      t._timer = setTimeout(() => t.style.opacity = 0, 2000);
-    }
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, doc, setDoc, getDoc, onSnapshot, collection } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-    function add(n) {
-      if (total >= 1000) { toast('challenge terminé !'); return; }
-      history.push(n);
-      total = Math.min(total + n, 1000);
-      save(); render();
-      if (total === 1000) toast('🎉 challenge complété !');
-    }
+  // ╔══════════════════════════════════════════╗
+  // ║  REMPLACE PAR TA CONFIG FIREBASE CI-BAS ║
+  // ╚══════════════════════════════════════════╝
+  const firebaseConfig = {
+   apiKey: "AIzaSyBkN46-yiDnPEJ0OLkdBGW_XXjWVF57rEA",
+authDomain: "test-burpees-challenge.firebaseapp.com",
+projectId: "test-burpees-challenge",
+storageBucket: "test-burpees-challenge.firebasestorage.app",
+messagingSenderId: "1039615314330",
+appId: "1:1039615314330:web:9f88fa3503d69ade561223",
+measurementId: "G-JQENGYQL9L"
+  };
+  // ════════════════════════════════════════════
 
-    function undo() {
-      if (!history.length) { toast('rien à annuler'); return; }
-      const last = history.pop();
-      total = Math.max(total - last, 0);
-      save(); render();
-      toast('− ' + last + ' annulé');
-    }
+  const app = initializeApp(firebaseConfig);
+  const db  = getFirestore(app);
 
-    function reset() {
-      if (!confirm('Remettre le compteur à zéro ?')) return;
-      total = 0; history = [];
-      save(); render();
-      toast('compteur remis à zéro');
-    }
+  const GOAL = 1000;
+  let pseudo = '', total = 0, history = [];
 
-    load();
-  </script>
+  // Auto-fill pseudo
+  const saved = localStorage.getItem('burpees_pseudo');
+  if (saved) document.getElementById('pseudo-input').value = saved;
+  document.getElementById('pseudo-input').addEventListener('keydown', e => { if (e.key === 'Enter') startApp(); });
+
+  window.startApp = async function() {
+    const val = document.getElementById('pseudo-input').value.trim();
+    if (!val) { document.getElementById('pseudo-input').focus(); return; }
+    pseudo = val;
+    localStorage.setItem('burpees_pseudo', pseudo);
+
+    const snap = await getDoc(doc(db, 'challengers', pseudo));
+    if (snap.exists()) total = snap.data().total || 0;
+    history = JSON.parse(localStorage.getItem('burpees_h_' + pseudo) || '[]');
+
+    document.getElementById('setup').style.display = 'none';
+    document.getElementById('app').style.display   = 'block';
+    document.getElementById('my-name').textContent = pseudo;
+
+    startTimer();
+    render();
+    listenLB();
+  };
+
+  // ── Timer de session ──
+  function startTimer() {
+    const t0 = Date.now();
+    setInterval(() => {
+      const s = Math.floor((Date.now() - t0) / 1000);
+      document.getElementById('timer').textContent =
+        String(Math.floor(s / 60)).padStart(2,'0') + ':' + String(s % 60).padStart(2,'0');
+    }, 1000);
+  }
+
+  // ── Render ──
+  function render() {
+    const n = Math.min(total, GOAL);
+    document.getElementById('my-count').textContent = total.toLocaleString('fr-FR');
+    const pct = Math.round(n / (GOAL / 100));
+    document.getElementById('my-bar').style.width = pct + '%';
+    document.getElementById('my-pct').textContent = pct + ' %';
+  }
+
+  // ── Save to Firestore ──
+  async function save() {
+    await setDoc(doc(db, 'challengers', pseudo), { name: pseudo, total, updatedAt: Date.now() });
+    localStorage.setItem('burpees_h_' + pseudo, JSON.stringify(history));
+  }
+
+  // ── Add / Undo ──
+  window.add = function(n) {
+    if (total >= GOAL) { toast('Challenge terminé !'); return; }
+    history.push(n);
+    total = Math.min(total + n, GOAL);
+    render(); save();
+    if (total >= GOAL) toast('🎉 Challenge complété !');
+  };
+
+  window.undo = function() {
+    if (!history.length) { toast('Rien à annuler'); return; }
+    const last = history.pop();
+    total = Math.max(total - last, 0);
+    render(); save();
+    toast('− ' + last + ' annulé');
+  };
+
+  window.toast = function(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg; el.style.opacity = 1;
+    clearTimeout(el._t);
+    el._t = setTimeout(() => el.style.opacity = 0, 2200);
+  };
+
+  // ── Live leaderboard ──
+  function listenLB() {
+    onSnapshot(collection(db, 'challengers'), snap => {
+      const players = [];
+      snap.forEach(d => players.push(d.data()));
+      players.sort((a, b) => b.total - a.total);
+
+      const maxScore = players[0]?.total || 1;
+      const list = document.getElementById('lb-list');
+      list.innerHTML = '';
+
+      if (!players.length) {
+        list.innerHTML = '<p style="font-size:13px;color:var(--muted);text-align:center;padding:1.5rem 0">Aucun participant</p>';
+        return;
+      }
+
+      players.forEach((p, i) => {
+        const isMe = p.name === pseudo;
+        const barW = Math.round((p.total / maxScore) * 100);
+        const done = p.total >= GOAL;
+        const rankClass = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
+        const rankLabel = i === 0 ? '1' : i === 1 ? '2' : i === 2 ? '3' : (i + 1);
+
+        const row = document.createElement('div');
+        row.className = 'lb-row' + (isMe ? ' me' : '');
+        row.innerHTML =
+          `<span class="lb-rank ${rankClass}">${rankLabel}</span>` +
+          `<span class="lb-name">${esc(p.name)}${isMe ? ' <span style="font-size:10px;opacity:0.5">(moi)</span>' : ''}</span>` +
+          `<div class="lb-bar-wrap"><div class="lb-bar" style="width:${barW}%"></div></div>` +
+          `<span class="lb-score">${p.total}${done ? '<span class="lb-check">✓</span>' : ''}</span>`;
+        list.appendChild(row);
+      });
+    });
+  }
+
+  function esc(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+</script>
 </body>
 </html>
